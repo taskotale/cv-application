@@ -17,6 +17,20 @@ section  {
   flex-direction: column;
   background-color: grey;
   border-radius: 10px;
+  gap: 5px;
 }
 
 
+.card-item {
+  border: salmon 3px solid;
+  border-radius: 5px;
+}
+
+.card-set:hover {
+  background-color: black;
+}
+
+.card-item:hover  {
+  background-color: black;
+  scale: 1.1;
+}
