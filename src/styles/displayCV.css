@@ -1,0 +1,71 @@
+.base {
+    display: flex;
+    background-color: greenyellow;
+    padding: 3px;
+}
+
+.heading-info {
+    background-color: yellow;
+}
+
+hr {
+    border-top: 1px solid yellow;
+}
+
+.leftContainerDisplay {
+    padding: 3px;
+    display: flex;
+    flex-direction: column;
+    background-color: #242424;
+}
+
+.cvImage {
+    border: 5px solid white;
+    max-width: 9rem;
+    margin: 2rem 0;
+}
+
+.basic-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.icon-info {
+    display: flex;
+}
+
+.icon-info>.fa-solid {
+    background-color: yellow;
+    color: #242424;
+    padding: 2px;
+    border-radius: 2px;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-right: 1rem;
+}
+
+.highlights {
+    display: flex;
+    flex-direction: column;
+}
+
+.highlight {
+    list-style-type: none;
+    text-align: left;
+    padding: 0;
+}
+
+.highlight>li {
+    margin-left: 1rem;
+}
+
+.rightContainerDisplay {
+    background-color: white;
+    color: #242424;
+    padding: 2rem;
+}
+/* CHANGE THISSSS */
+ul {
+    padding: 0;
+}

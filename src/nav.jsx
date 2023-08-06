@@ -9,7 +9,7 @@ export default function Nav () {
 }
 
 function Button(name) {
-    return (
-      <button className='nav-btn' key={name.name} >{name.name}</button>
-    )
-  }
+  return (
+    <button className='nav-btn' id={name.name} >{name.name}</button>
+  )
+} 

@@ -1,14 +1,18 @@
 #root {
-  max-width: 1280px;
   margin: 0 ;
   padding: 2rem;
-  text-align: center;
   width: 100%;
 }
 
+p {
+  margin: 0;
+}
+
 .main {
+  height: 90svh;
   display: grid;
-  grid-template-columns: 1fr 2fr 2fr;
+  justify-content: space-around;
+  grid-template-columns: 1fr 2fr 4fr;
   gap: 1rem;
 }
 
@@ -20,6 +24,9 @@ section  {
   gap: 5px;
 }
 
+button {
+  margin: 0.5rem;
+}
 
 .card-item {
   border: salmon 3px solid;
@@ -32,5 +39,6 @@ section  {
 
 .card-item:hover  {
   background-color: black;
-  scale: 1.1;
+  scale: 1.05;
 }
+

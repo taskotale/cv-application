@@ -1,53 +1,61 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react'
 import Card from './makeCards.jsx'
-import Nav from './nav.jsx'
+import DisplayCV from './displayCV.jsx'
+// import Nav from './nav.jsx'
 import './styles/App.css'
-
-
-const info = {
-  'Name' : 'tah',
-  'Last Name' : 'muj',
-}
-const edu = {
-  School : 'ul',
-  Year : '2022',
-}
-
-const addJob = (name ='job', posit='position', year = 'year') => {
-  return {
-    Job: name,
-    Position: posit,
-    Year: year
-  }
-}
-const jobs = [addJob('a', 'z', 1), addJob('b','y',2), addJob()]
+import person from './data.jsx'
 
 
 function App() {
+    const [editField, setEditField] = useState(person.info)
+    const changeEditField = (field) => {
+      switch(field){
+        case 'info':
+          setEditField(person.info)
+          break
+        case 'education':
+          setEditField(person.edu)
+          break
+        case 'experience':
+          setEditField(person.jobs)
+          break
+        default:
+          setEditField('hello')
+      }
+     }
     return (
       <div className='main'>
           <section className="nav" id='nav' >
-            <Nav></Nav>
+            <Button 
+              name='info' 
+              setHandle={changeEditField}
+              ></Button>
+            <Button name='education' setHandle={changeEditField}></Button>
+            <Button name='experience' setHandle={changeEditField}></Button>
           </section>
           <section className="edit" id="editCV">
               <Card
-                toCard = {jobs}
-              />
+                toCard = {editField}
+                />
           </section>
           <section className="displayCV" id="displayCV">
-              <Card 
-                toCard = {info}
-                />
-              <Card
-                toCard = {edu}
-                />
-              <Card
-                toCard = {jobs}
-                />
+              <DisplayCV data={person}></DisplayCV>
           </section>
       </div>
     )
-}
-
-export default App
-
+  }
+  function Button({name, setHandle}) {
+    const handleClick = setHandle
+    return (
+      <button className='nav-btn' id={name}
+      onClick={()=> {
+        handleClick(name)
+      }}
+      >{name}</button>
+    )
+  } 
+  
+  export default App
+  
+  
