@@ -1,61 +1,51 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react'
-import Card from './makeCards.jsx'
+// import Card from './makeCards.jsx'
 import DisplayCV from './displayCV.jsx'
-// import Nav from './nav.jsx'
+import Edit from './edit.jsx'
+import NavBtns from './nav.jsx'
 import './styles/App.css'
 import person from './data.jsx'
 
+// import { v4 as uuid } from 'uuid';
 
-function App() {
+export default function App() {
     const [editField, setEditField] = useState(person.info)
-    const changeEditField = (field) => {
-      switch(field){
+    const changeEditField = (field, location) => {
+      switch(location){
         case 'info':
           setEditField(person.info)
           break
-        case 'education':
-          setEditField(person.edu)
+        case 'timelines':
+          setEditField((person.timelines.filter((timeline) => timeline.name === field ))[0])
           break
-        case 'experience':
-          setEditField(person.jobs)
+        case 'highlights':
+          setEditField((person.highlights.filter((highlight) => highlight.name === field ))[0])
           break
         default:
-          setEditField('hello')
+          setEditField('Select field to edit on the left')
       }
-     }
+    }
     return (
       <div className='main'>
           <section className="nav" id='nav' >
-            <Button 
-              name='info' 
-              setHandle={changeEditField}
-              ></Button>
-            <Button name='education' setHandle={changeEditField}></Button>
-            <Button name='experience' setHandle={changeEditField}></Button>
+            <NavBtns
+              person={person}
+              setHandle={changeEditField} 
+            />
           </section>
           <section className="edit" id="editCV">
-              <Card
-                toCard = {editField}
-                />
+              <Edit
+                toEdit= {editField} 
+              />
           </section>
           <section className="displayCV" id="displayCV">
               <DisplayCV data={person}></DisplayCV>
           </section>
       </div>
     )
-  }
-  function Button({name, setHandle}) {
-    const handleClick = setHandle
-    return (
-      <button className='nav-btn' id={name}
-      onClick={()=> {
-        handleClick(name)
-      }}
-      >{name}</button>
-    )
-  } 
-  
-  export default App
-  
+  }  
+
+
+
   

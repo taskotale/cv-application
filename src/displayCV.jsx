@@ -20,7 +20,7 @@ export default function DisplayCV ({data}) {
                     <h5 className='heading-profession'>{data.info.profession}</h5>
                 </div>
                 <div className="cv-description" >
-                    {data.description}
+                    {data.info.description}
                 </div>
                 <div className="timelines">
                     {timelines}
@@ -33,7 +33,7 @@ export default function DisplayCV ({data}) {
 const getPersonalDetails = (info) => {
     return (
         <div className='cv-personal-details'>
-            <div>
+            <div className='cvImg'>
                 <img className='cvImage' src={info.img} alt="person image" />
             </div>
             <div className='basic-info'>
@@ -85,7 +85,7 @@ const getTimelines = (data) => {
 
 
 const getTimeline = (timeline) => {
-    const sectionName = timeline.section
+    const sectionName = timeline.name
     const listSections = [...timeline.list]
     const showListSections = listSections.map((item, index)=>{
         if (index !== listSections.length -1) {

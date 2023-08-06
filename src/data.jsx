@@ -24,9 +24,9 @@ const person = {
         email: 'taskotale@gmail.com',
         web: 'mujic.me',
         address: 'Carlstadt, NJ',
-        img: './src/static/img.jpg'
+        img: './src/static/img.jpg',
+        description: 'Experienced and detail-oriented professional transitioning into software development. Strong problem-solving skills, adept at multitasking. Enthusiastic team player committed to seamless operations and impactful contributions in software development.',
     },
-    description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos non repellendus eligendi quam tenetur provident.',
     highlights: [
             {
                 name: 'Skills',
@@ -36,7 +36,7 @@ const person = {
                     'Python',
                     'HTML',
                     'CSS'
-                ]
+                ],
             },
             {
                 name: 'Language',
@@ -46,11 +46,11 @@ const person = {
                     'Montenegrin'
                 ]
             },
-            addHighlight('hey', ['asd','asdd'])
+            addHighlight('hey', ['asd','asd'])
         ],
     timelines : [
         {
-            section: 'Education',
+            name: 'Education',
             list: [
                 {
                     name : 'CS50',
@@ -63,7 +63,7 @@ const person = {
             ]
         },
         {
-            section: 'Experience',
+            name: 'Experience',
             list: [
                 getNewTimelineSection('a', 'z', 1), 
                 getNewTimelineSection('b','y',2), 
