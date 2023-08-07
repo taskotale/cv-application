@@ -2,19 +2,23 @@
 import { useState } from 'react'
 // import Card from './makeCards.jsx'
 import DisplayCV from './displayCV.jsx'
+import EditHighlights from './editHighlights.jsx'
 import EditInfo from './editInfo.jsx'
 import EditTimelines from './editTimeline.jsx'
 import NavBtns from './nav.jsx'
 import './styles/App.css'
 import person from './data.jsx'
 
-import { v4 as uuid } from 'uuid';
+import { flushSync } from 'react-dom';
+
+
 
 export default function App() {
   const [fieldToEdit, setFieldToEdit] = useState(['info'])
   // const [hover, setHover] = useState(false)
   const [editInfo, setEditInfo] = useState(person.info)
-  const [editTimeline, setEditTimeline] = useState(null)
+  const [editTimeline, setEditTimeline] = useState(person.timelines[0])
+  const [editHighlights, setEditHighlights] = useState(person.highlights)
 
   const changeInfo = (key, value) => {
     const updated = {
@@ -40,9 +44,26 @@ export default function App() {
       })
       setEditTimeline({...newTimeline})
   }
+
+  const changeHighlight = (highlight, index, value) => {
+    const newList = highlight.list
+    newList[index] = value
+    const newHighlight = {
+      name: highlight.name,
+      list: newList
+    }
+    setEditHighlights(newHighlight)
+  }
   
   const changeFieldToEdit = (field, location) => {
-    
+    if (location === 'timelines') {
+      const newT = person[location].find((timeline) => timeline.name === field)
+      setEditTimeline(newT)
+    }
+    if (location === 'highlights') {
+      const newH = person[location].find((highlight) => highlight.name === field)
+      setEditHighlights(newH)
+    }
     setFieldToEdit([location, field])
   }
 
@@ -62,11 +83,13 @@ export default function App() {
             />:
             fieldToEdit[0]==='timelines'?
             <EditTimelines
-              timeline = {person.timelines.find((timeline) => timeline.name === fieldToEdit[1])}
+              timeline = {editTimeline}
               onChange= {changeTimeline} 
-            />: console.log('hey')
+            />: <EditHighlights
+              highlight = {editHighlights}
+              onChange = {changeHighlight}
             
-            
+            />     
             }
             
           </section>
@@ -76,3 +99,4 @@ export default function App() {
       </div>
     )
 }  
+

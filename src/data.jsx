@@ -1,12 +1,4 @@
 
-const getNewTimelineSection = (name ='NAME', date = 'Year', address = 'Location', description = 'description') => {
-    return {
-        name: name,
-        year: date,
-        location: address,
-        description: description 
-    }
-}
 
 const addHighlight = (sectionName = 'Section', sectionList =['']) => {
     const createList = [...sectionList]
@@ -54,20 +46,28 @@ const person = {
             list: [
                 {
                     name : 'CS50',
-                    year : '2023',
+                    date : '2023',
                     location: 'Harvard - Online',
                     description:`An introduction to computer science and programming, covering topics in web development, algorithms.
                     Learned essential computer science concepts and gained hands-on experience with programming languages such as C, Python, and web technologies like HTML, CSS, and JavaScript. Additionally, the course covered algorithms, data structures, and introduced me to the world of web development with practical projects using frameworks like Flask and SQL for database management.`
-                },
-                getNewTimelineSection()
+                }
             ]
         },
         {
             name: 'Experience',
             list: [
-                getNewTimelineSection('a', 'z', 1), 
-                getNewTimelineSection('b','y',2), 
-                getNewTimelineSection()
+                {
+                    position: 'operation',
+                    when: '2022',
+                    company: 'perf',
+                    responsibilities: 'asdujejbff'
+                },
+                {
+                    position: 'sales',
+                    when: '2021',
+                    company: 'perf',
+                    responsibilities: 'selling stuff'
+                }
             ]
     }]
     

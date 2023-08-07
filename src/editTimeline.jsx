@@ -1,5 +1,7 @@
 export default function EditTimelines ({timeline, onChange}) {
-    const text = timeline
+  console.log(timeline)
+  const text = timeline
+    // const timeline = timeline
     const title = <h2>{text.name}</h2>
     const fields = []
     text.list.map((field, index)=>{
@@ -18,16 +20,16 @@ export default function EditTimelines ({timeline, onChange}) {
     )
   }
   
-  const listKeys = (text, change, index, grandparent) => {
+  const listKeys = (timeline, change, index, grandparent) => {
     const show = []
-    for(const key in text) {
+    for(const key in timeline) {
       show.push(
         <div key={key}>
             <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
             <input
                 id={key}
                 name={key} 
-                defaultValue={text[key]} 
+                defaultValue={timeline[key]} 
                 onChange={(e)=> {
                     change(key,e.target.value,index, grandparent)
                     }
