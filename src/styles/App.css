@@ -33,12 +33,6 @@ button {
   border-radius: 5px;
 }
 
-.card-set:hover {
-  background-color: black;
+.hover {
+  background-color: blue;
 }
-
-.card-item:hover  {
-  background-color: black;
-  scale: 1.05;
-}
-

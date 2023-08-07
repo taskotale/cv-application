@@ -34,7 +34,7 @@ const getPersonalDetails = (info) => {
     return (
         <div className='cv-personal-details'>
             <div className='cvImg'>
-                <img className='cvImage' src={info.img} alt="person image" />
+                <img className='cvImage' src={info.image} alt="person image" />
             </div>
             <div className='basic-info'>
                 <div className='icon-info'><i className="fa-solid fa-phone"></i><div>{info.phone}</div></div>
