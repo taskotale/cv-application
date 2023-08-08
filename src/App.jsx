@@ -27,19 +27,28 @@ export default function App() {
   }
 
   const changeTimeline = (key, value, parent, grandparent) => {
+    let newTimeline = {}
+    if(grandparent){
       const childToChange = editTimeline.list[parent]
       const updated = {
         ...childToChange,
         [key]:value
       }
-      let newTimeline = {}
       person.timelines.map((timeline)=> {
         if(timeline.name === grandparent) {
           timeline.list[parent] = updated
           newTimeline = timeline
         }
       })
-      setEditTimeline({...newTimeline})
+    } else {
+      console.log('try to edit')
+      const temp = person.timelines.find(timeline=>timeline.name === parent)
+      temp.list.push(value)
+      console.log(temp.list)
+      console.log(person.timelines[1].list)
+      newTimeline = temp
+    }
+    setEditTimeline({...newTimeline})
   }
 
   const changeHighlight = (highlight, value, index) => {

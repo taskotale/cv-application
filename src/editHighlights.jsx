@@ -27,23 +27,26 @@ export default function EditHighlights ({highlight, onChange}) {
         onChange(text, value)
     }
     
+    const addNewHighlight = (text) => {
+        return(
+            <form key={text.name}>
+                <input
+                    id='inputAdd'
+                    placeholder={"Type to add a new "+text.name}
+                ></input>
+                <button
+                    onClick={()=>{
+                        addNewField(document.getElementById('inputAdd').value)
+                    }}
+                >Add</button>
+            </form>
+        )
+    }
+
     const addNewBtn = (
         <button
             onClick={()=>{
-                const addNewHighlight = (
-                    <form key={text.name}>
-                        <input
-                            id='inputAdd'
-                            placeholder={"Type to add a new "+text.name}
-                        ></input>
-                        <button
-                            onClick={()=>{
-                                addNewField(document.getElementById('inputAdd').value)
-                            }}
-                        >Add</button>
-                    </form>
-                    )
-                setNewHighlight(addNewHighlight)
+                setNewHighlight(addNewHighlight(text))
             }}
             >Add more {text.name}
         </button>
