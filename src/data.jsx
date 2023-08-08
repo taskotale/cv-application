@@ -66,7 +66,7 @@ const person = {
                     position: 'sales',
                     when: '2021',
                     company: 'perf',
-                    responsibilities: 'selling stuff'
+                    responsibilities: 'sellisng stuff'
                 }
             ]
     }]

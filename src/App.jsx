@@ -9,9 +9,6 @@ import NavBtns from './nav.jsx'
 import './styles/App.css'
 import person from './data.jsx'
 
-import { flushSync } from 'react-dom';
-
-
 
 export default function App() {
   const [fieldToEdit, setFieldToEdit] = useState(['info'])
@@ -45,9 +42,15 @@ export default function App() {
       setEditTimeline({...newTimeline})
   }
 
-  const changeHighlight = (highlight, index, value) => {
+  const changeHighlight = (highlight, value, index) => {
     const newList = highlight.list
-    newList[index] = value
+    if (!index) {
+      console.log('trying to add')
+      newList.push(value)
+    }
+    else {
+      newList[index] = value
+    }
     const newHighlight = {
       name: highlight.name,
       list: newList
