@@ -1,0 +1,37 @@
+.highlight-name {
+    position: relative;
+}
+
+.name-hover-message {
+    position: absolute;
+    bottom: 65%;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+    border: 1px solid yellow;
+    border-radius: 10px;
+    padding: 0.25rem ;
+    background-color: black;
+    scale: 0.5;
+}
+
+.highlight-name:hover .name-hover-message {
+    visibility: visible;
+    opacity: 1;
+}
+
+.hide {
+    visibility: hidden;
+    opacity: 0
+}
+
+.highlight-name-edit {
+
+}
+
+.highlight-name-edit-input {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+}

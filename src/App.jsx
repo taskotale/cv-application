@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react'
-// import Card from './makeCards.jsx'
 import DisplayCV from './displayCV.jsx'
 import EditHighlights from './editHighlights.jsx'
 import EditInfo from './editInfo.jsx'
@@ -17,6 +16,7 @@ export default function App() {
   const [editTimeline, setEditTimeline] = useState(person.timelines[0])
   const [editHighlights, setEditHighlights] = useState(person.highlights)
 
+
   const changeInfo = (key, value) => {
     const updated = {
       ...editInfo,
@@ -24,6 +24,12 @@ export default function App() {
     }
     person.info = updated
     setEditInfo(updated)
+  }
+
+  const changeHighlightName = (name, newName) => {
+    const nameToUpdate = person.highlights.find(highlight=>highlight.name === name)
+    nameToUpdate.name = newName
+    setEditHighlights({...nameToUpdate})
   }
 
   const changeTimeline = (key, value, parent, grandparent) => {
@@ -41,11 +47,8 @@ export default function App() {
         }
       })
     } else {
-      console.log('try to edit')
       const temp = person.timelines.find(timeline=>timeline.name === parent)
       temp.list.push(value)
-      console.log(temp.list)
-      console.log(person.timelines[1].list)
       newTimeline = temp
     }
     setEditTimeline({...newTimeline})
@@ -54,7 +57,6 @@ export default function App() {
   const changeHighlight = (highlight, value, index) => {
     const newList = highlight.list
     if (!index) {
-      console.log('trying to add')
       newList.push(value)
     }
     else {
@@ -100,6 +102,7 @@ export default function App() {
             />: <EditHighlights
               highlight = {editHighlights}
               onChange = {changeHighlight}
+              changeName ={changeHighlightName}
             
             />     
             }

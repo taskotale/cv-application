@@ -1,11 +1,35 @@
+import './styles/editNameSection.css'
 import { useState } from 'react'
 
-export default function EditHighlights ({highlight, onChange}) {
+export default function EditHighlights ({highlight, onChange, changeName}) {
     const [newHighlight, setNewHighlight] = useState(false)
+    const [showEdit, setShowEdit] = useState(false)
+    
+    
 
     const text = highlight
 
-    const title = <h2>{text.name}</h2>
+    const title = <>
+                    <div
+                    className='highlight-name'
+                    onClick={()=>setShowEdit(!showEdit)}
+                    >{text.name}
+                        <div className='name-hover-message'>Click to edit</div>
+                    </div>
+                    <div
+                    className= {showEdit?'highlight-name-edit':'highlight-name-edit hide'}
+                    >
+                        <input
+                        className='highlight-name-edit-input'
+                        defaultValue={text.name}
+                        onChange={(e)=>{
+                            changeName(text.name, e.target.value)
+                        }}
+                        >
+                        </input>
+                    </div>
+                </>
+
     const fields = []
     text.list.map((field, index) => {
         fields.push(
