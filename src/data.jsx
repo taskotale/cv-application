@@ -1,12 +1,15 @@
+import { v4 as uuid } from 'uuid';
 
 
-const addHighlight = (sectionName = 'Section', sectionList =['']) => {
+const addHighlight = (sectionName = 'Section', sectionList =[''], key = null) => {
     const createList = [...sectionList]
     return {
         name : sectionName,
-        list : createList
+        list : createList,
+        key : key
     }
 }
+
 
 const person = {
     info: {
@@ -29,6 +32,7 @@ const person = {
                     'HTML',
                     'CSS'
                 ],
+                key: uuid()
             },
             {
                 name: 'Language',
@@ -36,9 +40,10 @@ const person = {
                     'English',
                     'Italian',
                     'Montenegrin'
-                ]
+                ],
+                key: uuid()
             },
-            addHighlight('hey', ['asd','asd'])
+            addHighlight('hey', ['asd','asd'],uuid())
         ],
     timelines : [
         {

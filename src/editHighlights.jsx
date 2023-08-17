@@ -5,19 +5,21 @@ export default function EditHighlights ({highlight, onChange, changeName}) {
     const [newHighlight, setNewHighlight] = useState(false)
     const [showEdit, setShowEdit] = useState(false)
     
-    
-
     const text = highlight
 
     const title = <>
                     <div
-                    className='highlight-name'
-                    onClick={()=>setShowEdit(!showEdit)}
-                    >{text.name}
+                        className='highlight-name'
+                        onClick={()=>showEdit === false ? setShowEdit(editName()): setShowEdit(false)}
+                        >{text.name}
                         <div className='name-hover-message'>Click to edit</div>
                     </div>
-                    <div
-                    className= {showEdit?'highlight-name-edit':'highlight-name-edit hide'}
+                </>
+
+    const editName = () => {
+        return (
+                <div
+                    key={text.key}
                     >
                         <input
                         className='highlight-name-edit-input'
@@ -27,8 +29,17 @@ export default function EditHighlights ({highlight, onChange, changeName}) {
                         }}
                         >
                         </input>
-                    </div>
-                </>
+                </div> 
+                )
+        }
+
+    let showNameEdit = showEdit
+    if(showEdit.key !== text.key) {
+        showNameEdit = false
+        if (!showEdit === false) {
+            setShowEdit(showNameEdit)
+            }
+        }
 
     const fields = []
     text.list.map((field, index) => {
@@ -39,6 +50,7 @@ export default function EditHighlights ({highlight, onChange, changeName}) {
                 value={field}
                 key={index} 
                 onChange={(e)=> {
+                    setShowEdit(showEdit)
                     onChange(text, e.target.value, index)
                     }
                 }
@@ -48,7 +60,7 @@ export default function EditHighlights ({highlight, onChange, changeName}) {
 
     const addNewField = (value) => {
         setNewHighlight(false)
-        onChange(text, value)
+        onChange(text, value, false)
     }
     
     const addNewHighlight = (text) => {
@@ -83,10 +95,13 @@ export default function EditHighlights ({highlight, onChange, changeName}) {
             setNewHighlight(show)
         }
     }
-        
+
     return (
         <div>
-            {title}
+            <div>
+                {title}
+                {showNameEdit}
+            </div>
             {fields}
             <div>
                 {show}

@@ -15,6 +15,7 @@ export default function App() {
   const [editInfo, setEditInfo] = useState(person.info)
   const [editTimeline, setEditTimeline] = useState(person.timelines[0])
   const [editHighlights, setEditHighlights] = useState(person.highlights)
+  
 
 
   const changeInfo = (key, value) => {
@@ -26,12 +27,7 @@ export default function App() {
     setEditInfo(updated)
   }
 
-  const changeHighlightName = (name, newName) => {
-    const nameToUpdate = person.highlights.find(highlight=>highlight.name === name)
-    nameToUpdate.name = newName
-    setEditHighlights({...nameToUpdate})
-  }
-
+  
   const changeTimeline = (key, value, parent, grandparent) => {
     let newTimeline = {}
     if(grandparent){
@@ -53,18 +49,25 @@ export default function App() {
     }
     setEditTimeline({...newTimeline})
   }
+  
+  const changeHighlightName = (name, newName) => {
+    const nameToUpdate = person.highlights.find(highlight=>highlight.name === name)
+    nameToUpdate.name = newName
+    setEditHighlights({...nameToUpdate})
+  }
 
   const changeHighlight = (highlight, value, index) => {
+    console.log(highlight)
     const newList = highlight.list
-    if (!index) {
+    if (index === false) {
       newList.push(value)
     }
     else {
       newList[index] = value
     }
     const newHighlight = {
-      name: highlight.name,
-      list: newList
+      ...highlight,
+      list: newList,
     }
     setEditHighlights(newHighlight)
   }
