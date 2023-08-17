@@ -42,8 +42,7 @@ const person = {
                     'Montenegrin'
                 ],
                 key: uuid()
-            },
-            addHighlight('hey', ['asd','asd'],uuid())
+            }
         ],
     timelines : [
         {

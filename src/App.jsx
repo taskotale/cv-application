@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react'
+import addHighlight from '../addNewHighlight.jsx'
 import DisplayCV from './displayCV.jsx'
 import EditHighlights from './editHighlights.jsx'
 import EditInfo from './editInfo.jsx'
@@ -57,7 +58,6 @@ export default function App() {
   }
 
   const changeHighlight = (highlight, value, index) => {
-    console.log(highlight)
     const newList = highlight.list
     if (index === false) {
       newList.push(value)
@@ -89,7 +89,8 @@ export default function App() {
           <section className="nav" id='nav' >
             <NavBtns
               person={person}
-              setHandle={changeFieldToEdit} 
+              setHandle={changeFieldToEdit}
+              addToNav={changeFieldToEdit} 
             />
           </section>
           <section className="edit" id="editCV">

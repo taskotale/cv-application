@@ -1,7 +1,13 @@
 import { v4 as uuid } from 'uuid';
+import addHighlight from '../addNewHighlight.jsx'
+import person from './data.jsx'
 
+const addNewHighlightBtn = (addToNav) => {
+  person.highlights.push(addHighlight('New Highlight', [''], uuid()))
+  addToNav('New Highlight','highlights')
+}
 
-export default function NavBtns({person, setHandle}) {
+export default function NavBtns({person, setHandle,addToNav}) {
   const infoBtn =  (
     <Button
     key={uuid()}
@@ -20,14 +26,22 @@ export default function NavBtns({person, setHandle}) {
         />
         )
       })
+      
       const highlightsBtns = person.highlights.map((highlight)=>{
+        console.log(highlight.key)
         return (
+          <div
+            key={highlight.name}
+          >
           <Button
-          key={uuid()}
+          key={highlight.key}
           name={highlight.name}
           location={'highlights'}
           setHandle={setHandle}
           />
+          <button
+          >X</button>
+          </div>
           )
         })
         
@@ -41,6 +55,12 @@ export default function NavBtns({person, setHandle}) {
     <div>
       <i>Highlights</i>
       {highlightsBtns}
+      <button
+      onClick={()=> {
+        addNewHighlightBtn(addToNav)
+      }
+      }
+      >add new</button>
     </div>
     </>
   )
