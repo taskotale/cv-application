@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react'
-import addHighlight from '../addNewHighlight.jsx'
+import addHighlight from './addNewHighlight.jsx'
 import DisplayCV from './displayCV.jsx'
 import EditHighlights from './editHighlights.jsx'
 import EditInfo from './editInfo.jsx'
@@ -90,7 +90,6 @@ export default function App() {
             <NavBtns
               person={person}
               setHandle={changeFieldToEdit}
-              addToNav={changeFieldToEdit} 
             />
           </section>
           <section className="edit" id="editCV">

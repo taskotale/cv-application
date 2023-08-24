@@ -1,13 +1,21 @@
 import { v4 as uuid } from 'uuid';
-import addHighlight from '../addNewHighlight.jsx'
+import addHighlight from './addNewHighlight.jsx'
 import person from './data.jsx'
+import { useState } from 'react';
 
 const addNewHighlightBtn = (addToNav) => {
   person.highlights.push(addHighlight('New Highlight', [''], uuid()))
   addToNav('New Highlight','highlights')
 }
 
-export default function NavBtns({person, setHandle,addToNav}) {
+const deleteHighlight = (arg) => {
+  let toDelete = person.highlights.find(highlight=>highlight.key===arg)
+  let newHighlight = person.highlights.filter(highlight => highlight !== toDelete)
+  person.highlights = newHighlight
+}
+
+export default function NavBtns({person, setHandle}) {
+  const [isHovered, setIsHovered] = useState(false)
   const infoBtn =  (
     <Button
     key={uuid()}
@@ -27,23 +35,26 @@ export default function NavBtns({person, setHandle,addToNav}) {
         )
       })
       
-      const highlightsBtns = person.highlights.map((highlight)=>{
-        console.log(highlight.key)
-        return (
-          <div
-            key={highlight.name}
-          >
-          <Button
-          key={highlight.key}
-          name={highlight.name}
-          location={'highlights'}
-          setHandle={setHandle}
-          />
-          <button
-          >X</button>
-          </div>
-          )
-        })
+    const highlightsBtns = person.highlights.map((highlight)=>{
+      return (
+        <div
+          key={highlight.name}
+          onMouseEnter={(e)=>setIsHovered(e.target.lastChild.hidden=false)}
+          onMouseLeave={(e)=>setIsHovered(e.target.lastChild.hidden=true)}
+        >
+        <Button
+        key={uuid()}
+        name={highlight.name}
+        location={'highlights'}
+        setHandle={setHandle}     
+        />
+        <button
+        hidden={true}
+        onClick={()=>deleteHighlight(highlight.key)}
+        >X</button>
+        </div>
+        )
+      })
         
         return (
           <>
@@ -57,7 +68,7 @@ export default function NavBtns({person, setHandle,addToNav}) {
       {highlightsBtns}
       <button
       onClick={()=> {
-        addNewHighlightBtn(addToNav)
+        addNewHighlightBtn(setHandle)
       }
       }
       >add new</button>
