@@ -1,17 +1,15 @@
 import { v4 as uuid } from 'uuid';
-import addHighlight from './addNewHighlight.jsx'
 import person from './data.jsx'
 import { useState } from 'react';
+import addNewHighlightBtn from './addNewHighlightBtn.jsx';
 
-const addNewHighlightBtn = (addToNav) => {
-  person.highlights.push(addHighlight('New Highlight', [''], uuid()))
-  addToNav('New Highlight','highlights')
-}
 
-const deleteHighlight = (arg) => {
-  let toDelete = person.highlights.find(highlight=>highlight.key===arg)
+const deleteHighlight = (key,changeScreen) => {
+  let toDelete = person.highlights.find(highlight=>highlight.key===key)
   let newHighlight = person.highlights.filter(highlight => highlight !== toDelete)
   person.highlights = newHighlight
+  console.log(newHighlight.length)
+  newHighlight.length >0? changeScreen(person.highlights[0].name,'highlights'): changeScreen(false,'highlights')
 }
 
 export default function NavBtns({person, setHandle}) {
@@ -36,6 +34,7 @@ export default function NavBtns({person, setHandle}) {
       })
       
     const highlightsBtns = person.highlights.map((highlight)=>{
+      if(highlight) {
       return (
         <div
           key={highlight.name}
@@ -50,11 +49,14 @@ export default function NavBtns({person, setHandle}) {
         />
         <button
         hidden={true}
-        onClick={()=>deleteHighlight(highlight.key)}
+        onClick={()=>deleteHighlight(highlight.key, setHandle)}
         >X</button>
         </div>
         )
-      })
+      }
+    }
+
+      )
         
         return (
           <>

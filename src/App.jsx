@@ -53,8 +53,12 @@ export default function App() {
   
   const changeHighlightName = (name, newName) => {
     const nameToUpdate = person.highlights.find(highlight=>highlight.name === name)
-    nameToUpdate.name = newName
-    setEditHighlights({...nameToUpdate})
+    nameToUpdate.name = newName;
+    setEditHighlights({
+      ...nameToUpdate,
+      name: newName,
+    })
+    changeFieldToEdit(newName, 'highlights')
   }
 
   const changeHighlight = (highlight, value, index) => {
@@ -106,7 +110,7 @@ export default function App() {
               highlight = {editHighlights}
               onChange = {changeHighlight}
               changeName ={changeHighlightName}
-            
+              setHandle={changeFieldToEdit}
             />     
             }
             
