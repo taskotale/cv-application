@@ -73,7 +73,7 @@ export default function NavBtns({person, setHandle}) {
         addNewHighlightBtn(setHandle)
       }
       }
-      >add new</button>
+      >Add new</button>
     </div>
     </>
   )

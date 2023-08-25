@@ -64,10 +64,10 @@ export default function App() {
   const changeHighlight = (highlight, value, index) => {
     const newList = highlight.list
     if (index === false) {
-      newList.push(value)
+      if(value !== '') newList.push(value)
     }
     else {
-      newList[index] = value
+      value != ''? newList[index] = value : newList.splice(index,1)
     }
     const newHighlight = {
       ...highlight,
