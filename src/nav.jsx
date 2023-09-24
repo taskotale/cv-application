@@ -8,7 +8,6 @@ const deleteHighlight = (key,changeScreen) => {
   let toDelete = person.highlights.find(highlight=>highlight.key===key)
   let newHighlight = person.highlights.filter(highlight => highlight !== toDelete)
   person.highlights = newHighlight
-  console.log(newHighlight.length)
   newHighlight.length >0? changeScreen(person.highlights[0].name,'highlights'): changeScreen(false,'highlights')
 }
 

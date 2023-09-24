@@ -16,8 +16,6 @@ export default function App() {
   const [editInfo, setEditInfo] = useState(person.info)
   const [editTimeline, setEditTimeline] = useState(person.timelines[0])
   const [editHighlights, setEditHighlights] = useState(person.highlights)
-  
-
 
   const changeInfo = (key, value) => {
     const updated = {

@@ -58,25 +58,26 @@ export default function EditHighlights ({highlight, onChange, changeName, setHan
     const fields = []
     text.list.map((field, index) => {
         fields.push(
-            <div>
-            <input
-                id={field}
-                name={field} 
-                value={field}
-                key={index} 
-                onChange={(e)=> {
-                    setShowEditName(showEditName)
-                    onChange(text, e.target.value, index)
+            <>
+                <input
+                    id={field}
+                    name={field} 
+                    value={field}
+                    key={index}
+                    onChange={(e)=> {
+                        setShowEditName(showEditName)
+                        onChange(text, e.target.value, index)
+                        }
                     }
-                }
-            />
-            <button
-                onClick={()=>{
-                    setShowEditName(showEditName)
-                    onChange(text, '', index)
-                }}
-            >X</button>
-            </div>
+                />
+                <button
+                    onClick={()=>{
+                        setShowEditName(showEditName)
+                        onChange(text, '', index)
+                    }}
+                    >X
+                </button>
+            </>
         )
     })
 
