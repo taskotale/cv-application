@@ -1,16 +1,6 @@
 import { v4 as uuid } from 'uuid';
 
 
-const addHighlight = (sectionName = 'Section', sectionList =[''], key = null) => {
-    const createList = [...sectionList]
-    return {
-        name : sectionName,
-        list : createList,
-        key : key
-    }
-}
-
-
 const person = {
     info: {
         name : 'Tahir Mujic',

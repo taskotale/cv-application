@@ -1,13 +1,17 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react'
-import addHighlight from './addNewHighlight.jsx'
+// import addHighlight from './addNewHighlight.jsx'
 import DisplayCV from './displayCV.jsx'
 import EditHighlights from './editHighlights.jsx'
 import EditInfo from './editInfo.jsx'
 import EditTimelines from './editTimeline.jsx'
 import NavBtns from './nav.jsx'
-import './styles/App.css'
 import person from './data.jsx'
+import './styles/App.css'
+
+
+
+import PDFGenerator from './pdfGenerator.jsx'
 
 
 export default function App() {
@@ -16,6 +20,7 @@ export default function App() {
   const [editInfo, setEditInfo] = useState(person.info)
   const [editTimeline, setEditTimeline] = useState(person.timelines[0])
   const [editHighlights, setEditHighlights] = useState(person.highlights)
+  const [showPdf, setShowPdf] = useState(false)
 
   const changeInfo = (key, value) => {
     const updated = {
@@ -86,13 +91,21 @@ export default function App() {
     setFieldToEdit([location, field])
   }
 
-    return ( 
+  const handleShowPdf = () => setShowPdf(true)
+
+    return (
+      
       <div className='main'> 
           <section className="nav" id='nav' >
             <NavBtns
               person={person}
               setHandle={changeFieldToEdit}
             />
+            <div>
+              <button onClick={handleShowPdf}>Download PDF</button> 
+            </div>
+            {showPdf && <PDFGenerator />}
+
           </section>
           <section className="edit" id="editCV">
             {fieldToEdit[0]==='info'?

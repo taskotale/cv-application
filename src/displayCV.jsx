@@ -3,13 +3,14 @@ import './styles/displayCV.css'
 import { v4 as uuid } from 'uuid';
 import {Fragment} from 'react'
 
+
 export default function DisplayCV ({data}) {
     const personalDetails = getPersonalDetails(data.info)
     const highlights = getHighlights(data.highlights)
     const timelines = getTimelines(data.timelines)
 
     return (
-        <div className='base'>
+        <div className='base' id='pdf-content'>
             <div className="leftContainerDisplay">
                 {personalDetails}
                 {highlights}
@@ -104,7 +105,7 @@ const getTimeline = (timeline) => {
         <ul key={uuid()}>
             <hr />
             <h3>{sectionName}</h3>
-            <hr />
+            {showListSections.length > 1 && <hr />}
             {showListSections}
         </ul>
     )
@@ -112,14 +113,15 @@ const getTimeline = (timeline) => {
 
 
 const getSection = (section) => {
+    const keys = Object.keys(section)
     return (  
         <li key={uuid()}>
-            <i>{section.year}</i> 
+            <i>{section[keys[1]]}</i> 
             <br />
-            <i>{section.location}</i>
+            <i>{section[keys[2]]}</i>
             <br />
-            <strong>{section.name}</strong>
-            <p>{section.description}</p>
+            <strong>{section[keys[0]]}</strong>
+            <p>{section[keys[3]]}</p>
         </li>
     )
 }
