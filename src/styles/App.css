@@ -37,3 +37,8 @@ button {
   background-color: blue;
 }
 
+.displayCV {
+  height: 90svh;
+  overflow: scroll;
+}
+

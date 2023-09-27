@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react'
-// import addHighlight from './addNewHighlight.jsx'
 import DisplayCV from './displayCV.jsx'
 import EditHighlights from './editHighlights.jsx'
 import EditInfo from './editInfo.jsx'
@@ -91,45 +90,48 @@ export default function App() {
     setFieldToEdit([location, field])
   }
 
-  const handleShowPdf = () => setShowPdf(true)
+  const handleShowPdf = () => setShowPdf(!showPdf)
 
     return (
-      
-      <div className='main'> 
-          <section className="nav" id='nav' >
-            <NavBtns
-              person={person}
-              setHandle={changeFieldToEdit}
-            />
-            <div>
-              <button onClick={handleShowPdf}>Download PDF</button> 
-            </div>
-            {showPdf && <PDFGenerator />}
+      <>
+      {showPdf && <PDFGenerator />}
+      {!showPdf &&
+        <div className='main' id='main'> 
+            <section className="nav" id='nav' >
+              <NavBtns
+                person={person}
+                setHandle={changeFieldToEdit}
+              />
+              <div>
+                <button onClick={handleShowPdf}>Look PDF</button> 
+              </div>
 
-          </section>
-          <section className="edit" id="editCV">
-            {fieldToEdit[0]==='info'?
-            <EditInfo 
-                info = {editInfo}
-                change = {changeInfo}
-            />:
-            fieldToEdit[0]==='timelines'?
-            <EditTimelines
-              timeline = {editTimeline}
-              onChange= {changeTimeline} 
-            />: <EditHighlights
-              highlight = {editHighlights}
-              onChange = {changeHighlight}
-              changeName ={changeHighlightName}
-              setHandle={changeFieldToEdit}
-            />     
-            }
-            
-          </section>
-          <section className="displayCV" id="displayCV">
-              <DisplayCV data={person}></DisplayCV>
-          </section>
-      </div>
+            </section>
+            <section className="edit" id="editCV">
+              {fieldToEdit[0]==='info'?
+              <EditInfo 
+                  info = {editInfo}
+                  change = {changeInfo}
+              />:
+              fieldToEdit[0]==='timelines'?
+              <EditTimelines
+                timeline = {editTimeline}
+                onChange= {changeTimeline} 
+              />: <EditHighlights
+                highlight = {editHighlights}
+                onChange = {changeHighlight}
+                changeName ={changeHighlightName}
+                setHandle={changeFieldToEdit}
+              />     
+              }
+              
+            </section>
+            <section className="displayCV" id="displayCV">
+                <DisplayCV data={person}></DisplayCV>
+            </section>
+        </div>
+      }
+    </>
     )
 }  
 

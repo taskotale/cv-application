@@ -1,6 +1,5 @@
 .base {
     display: flex;
-    background-color: greenyellow;
     padding: 3px;
 }
 
@@ -15,6 +14,7 @@ hr {
     background-color: #242424;
     position: relative;
     z-index: 30;
+    
 }
 
 .cvImage {
