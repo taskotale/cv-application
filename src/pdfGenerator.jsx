@@ -5,6 +5,13 @@ import { Document, Image, Line, Page, PDFViewer, Text, Svg, Path, View, StyleShe
 
 const PDFGenerator = () => {
 
+  //long yellow line on right side
+  const YellowLine = () => {
+    return (
+      <Svg height="10" width="900">
+        <Line x1="0" y1="5" x2="380" y2="5" strokeWidth={2} stroke="yellow" />
+      </Svg>)
+    }
   const singleHighlight = (data) => {
     const List = () => {
       return (data.list.map((item)=>{
@@ -17,8 +24,8 @@ const PDFGenerator = () => {
         <Text style={styles.highlightName}>
           {data.name.toUpperCase()}
         </Text>
-        <Svg height="10" width="150">
-            <Line x1="0" y1="5" x2="280" y2="5" strokeWidth={2} stroke="yellow" />
+        <Svg height="10" width="140">
+          <Line x1="0" y1="5" x2="280" y2="5" strokeWidth={2} stroke="yellow" />
         </Svg>
         <List/>
       </View>
@@ -34,14 +41,12 @@ const PDFGenerator = () => {
   const getSection = (section) => {
     const keys = Object.keys(section)
     return ( 
-      <View>
-        <Text>{section[keys[1]]}</Text>
+      <View style={styles.sectionTimeline}>
+        <Text style={styles.negative}>• {section[keys[1]]}</Text>
         <Text>{section[keys[2]]}</Text>
         <Text>{section[keys[0]]}</Text>
         <Text>{section[keys[3]]}</Text>
-        <Svg height="10" width="150">
-            <Line x1="0" y1="5" x2="280" y2="5" strokeWidth={2} stroke="yellow" />
-        </Svg>
+        <YellowLine/>
       </View> 
     )
 }
@@ -54,11 +59,9 @@ const PDFGenerator = () => {
       }))
     }
     return (
-      <View key={data.name}>
-        <Text>{data.name}</Text>
-        <Svg height="10" width="150">
-            <Line x1="0" y1="5" x2="280" y2="5" strokeWidth={2} stroke="yellow" />
-        </Svg>
+      <View wrap={false} key={data.name}>
+        <Text style={styles.timelineName}>{data.name}</Text>
+        <YellowLine/>
         <Type/>
 
       </View>
@@ -78,16 +81,19 @@ const PDFGenerator = () => {
       flexDirection: 'row',
       width: '21cm',
       height: '29.7cm',
+    },
+    description:{
+      margin: '6mm',
       fontSize: '4mm'
     },
     highlight:{
       marginLeft:'0.55cm',
       marginTop:'5mm',
-    }
-    ,
+    },
     iconInfo:{
       flexDirection:'row',
-      marginBottom:'2mm'
+      marginBottom:'2mm',
+      fontSize: '4mm'
     },
     icon:{
       width:'5mm', 
@@ -111,7 +117,8 @@ const PDFGenerator = () => {
       padding: '3px',
       flexDirection: 'column',
       width: '6.5cm',
-      color:'white'
+      color:'white',
+      fontSize: '4mm'
     },
     nameContainer:{
       backgroundColor:'yellow',
@@ -120,13 +127,38 @@ const PDFGenerator = () => {
       marginLeft:'0',
       height:'3.5cm',
       justifyContent:'center',
-      gap:'10mm'
+      gap:'7mm'
+    },
+    name:{
+      fontFamily:'Helvetica-Bold',
+      fontSize: '7mm',
+      fontWeight: 'extrabold'
+    },
+    negative:{
+      marginLeft:'-2.5mm',
+      fontFamily:'Helvetica'
+    },
+    profession:{
+      fontFamily:'Helvetica-Bold',
+      fontSize:'4mm'
     },
     rightContainerDisplay: {
       backgroundColor: 'white',
       color: '#242424',
       width:'14.5cm',
       marginRight:'0.55cm',
+    },
+    rightContent:{
+      marginLeft:'0.55cm',
+      marginRight:'0.55cm',
+      fontSize: '4mm'
+    },
+    sectionTimeline:{
+      gap:'1mm'
+    },
+    timelineName:{
+      fontFamily:'Helvetica-Bold',
+      marginVertical:'3mm'
     }
     
   });
@@ -177,21 +209,21 @@ const PDFGenerator = () => {
         </View>
         <View style={styles.rightContainerDisplay}>
           <View style={styles.nameContainer}>
-            <Text>{person.info.name.toLocaleUpperCase()}</Text>
-            <Text>{person.info.profession}</Text>
+            <Text style={styles.name}>{person.info.name.toLocaleUpperCase()}</Text>
+            <Text style={styles.profession}>{person.info.profession}</Text>
           </View>
-          <Text>{person.info.description}</Text>
-          <Svg height="10" width="150">
-            <Line x1="0" y1="5" x2="280" y2="5" strokeWidth={2} stroke="yellow" />
-          </Svg>
-          <Timelines data={person.timelines}/>
+          <View style={styles.rightContent}>
+            <Text style={styles.description}>{person.info.description}</Text>
+            <YellowLine/>
+            <Timelines data={person.timelines}/>
+          </View>
         </View>
       </Page>
     </Document>
   );
   return (
     <>
-        <PDFViewer title='myCV.pdf' className='PDFViewer'>
+        <PDFViewer className='PDFViewer'>
           <MyDocument />
         </PDFViewer>
     </>
