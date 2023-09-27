@@ -1,22 +1,44 @@
 import './styles/pdfGenerator.css';
 import person from './data.jsx'
-import { Document, Image, Line, Page, PDFViewer, Text, Svg, Path, View, StyleSheet } from '@react-pdf/renderer';
+import { Document, Font, Image, Line, Page, PDFViewer, Text, Svg, Path, View, StyleSheet } from '@react-pdf/renderer';
+
+import lightFont from './fonts/Poppins-Light.ttf'
+import boldFont from './fonts/Poppins-Bold.ttf'
+import regularFont from './fonts/Poppins-regular.ttf'
+import italicFont from './fonts/Poppins-Italic.ttf'
 
 
-const PDFGenerator = () => {
+Font.register({
+  family: 'PoppinsThin',
+  src:lightFont
+});
+Font.register({
+  family: 'PoppinsBold',
+  src:boldFont
+})
+Font.register({
+  family: 'Poppins',
+  src:regularFont
+})
+Font.register({
+  family: 'PoppinsItalic',
+  src:italicFont
+})
+
+const PDFGenerator = ({handleShowPdf}) => {
 
   //long yellow line on right side
   const YellowLine = () => {
     return (
       <Svg height="10" width="900">
-        <Line x1="0" y1="5" x2="380" y2="5" strokeWidth={2} stroke="yellow" />
+        <Line x1="0" y1="5" x2="380" y2="5" strokeWidth={2} stroke="#FDD71B" />
       </Svg>)
     }
   const singleHighlight = (data) => {
     const List = () => {
       return (data.list.map((item)=>{
         return (
-          <Text key={item}>{item}</Text>
+          <Text style={styles.highlightItem} key={item}>{item}</Text>
         )
     }))}
     return (
@@ -25,7 +47,7 @@ const PDFGenerator = () => {
           {data.name.toUpperCase()}
         </Text>
         <Svg height="10" width="140">
-          <Line x1="0" y1="5" x2="280" y2="5" strokeWidth={2} stroke="yellow" />
+          <Line x1="0" y1="5" x2="280" y2="5" strokeWidth={2} stroke="#FDD71B" />
         </Svg>
         <List/>
       </View>
@@ -43,8 +65,8 @@ const PDFGenerator = () => {
     return ( 
       <View style={styles.sectionTimeline}>
         <Text style={styles.negative}>• {section[keys[1]]}</Text>
-        <Text>{section[keys[2]]}</Text>
-        <Text>{section[keys[0]]}</Text>
+        <Text style={styles.italicFont}>{section[keys[2]]}</Text>
+        <Text style={styles.boldFont}>{section[keys[0]]}</Text>
         <Text>{section[keys[3]]}</Text>
         <YellowLine/>
       </View> 
@@ -81,14 +103,23 @@ const PDFGenerator = () => {
       flexDirection: 'row',
       width: '21cm',
       height: '29.7cm',
+      fontFamily:'Poppins'
+    },
+    boldFont:{
+      fontFamily:'PoppinsBold'
     },
     description:{
       margin: '6mm',
-      fontSize: '4mm'
+      fontSize: '4mm',
+      fontFamily:'PoppinsThin'
+      
     },
     highlight:{
       marginLeft:'0.55cm',
       marginTop:'5mm',
+    },
+    highlightItem:{
+      marginLeft:'2mm'
     },
     iconInfo:{
       flexDirection:'row',
@@ -98,7 +129,7 @@ const PDFGenerator = () => {
     icon:{
       width:'5mm', 
       height:'5mm', 
-      backgroundColor:'yellow',
+      backgroundColor:'#FDD71B',
       marginLeft:'0.55cm',
     },
     image: {
@@ -112,8 +143,11 @@ const PDFGenerator = () => {
     infoText:{
       marginLeft:'0.3cm',
     },
+    italicFont:{
+      fontFamily:'PoppinsItalic'
+    },
     leftContainerDisplay: {
-      backgroundColor: '#242424',
+      backgroundColor:'#474545',
       padding: '3px',
       flexDirection: 'column',
       width: '6.5cm',
@@ -121,32 +155,29 @@ const PDFGenerator = () => {
       fontSize: '4mm'
     },
     nameContainer:{
-      backgroundColor:'yellow',
+      backgroundColor:'#FDD71B',
       textAlign:'center',
       marginTop:'1.5cm',
       marginLeft:'0',
       height:'3.5cm',
       justifyContent:'center',
-      gap:'7mm'
+      gap:'7mm',
+      fontFamily:'PoppinsBold',
     },
     name:{
-      fontFamily:'Helvetica-Bold',
       fontSize: '7mm',
-      fontWeight: 'extrabold'
     },
     negative:{
-      marginLeft:'-2.5mm',
-      fontFamily:'Helvetica'
+      marginLeft:'-2.5mm'
     },
     profession:{
-      fontFamily:'Helvetica-Bold',
       fontSize:'4mm'
     },
     rightContainerDisplay: {
       backgroundColor: 'white',
-      color: '#242424',
       width:'14.5cm',
       marginRight:'0.55cm',
+      color:'#474545'
     },
     rightContent:{
       marginLeft:'0.55cm',
@@ -157,7 +188,7 @@ const PDFGenerator = () => {
       gap:'1mm'
     },
     timelineName:{
-      fontFamily:'Helvetica-Bold',
+      fontFamily:'PoppinsBold',
       marginVertical:'3mm'
     }
     
@@ -223,6 +254,7 @@ const PDFGenerator = () => {
   );
   return (
     <>
+      <button onClick={handleShowPdf}>back</button>
         <PDFViewer className='PDFViewer'>
           <MyDocument />
         </PDFViewer>

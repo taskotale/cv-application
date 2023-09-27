@@ -94,7 +94,7 @@ export default function App() {
 
     return (
       <>
-      {showPdf && <PDFGenerator />}
+      {showPdf && <PDFGenerator handleShowPdf={handleShowPdf}/>}
       {!showPdf &&
         <div className='main' id='main'> 
             <section className="nav" id='nav' >

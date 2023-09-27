@@ -4,17 +4,17 @@
 }
 
 hr {
-    border-top: 1px solid yellow;
+    border-top: 1px solid #FDD71B;
 }
 
 .leftContainerDisplay {
     padding: 3px;
     display: flex;
     flex-direction: column;
-    background-color: #242424;
+    background-color: #383636;
     position: relative;
     z-index: 30;
-    
+
 }
 
 .cvImage {
@@ -34,8 +34,8 @@ hr {
 }
 
 .icon-info>.fa-solid {
-    background-color: yellow;
-    color: #242424;
+    background-color: #FDD71B;
+    color: #383636;
     padding: 2px;
     border-radius: 2px;
     width: 1.1rem;
@@ -60,7 +60,7 @@ hr {
 
 .rightContainerDisplay {
     background-color: white;
-    color: #242424;
+    color: #474545;
     padding: 2rem;
 }
 
@@ -79,7 +79,7 @@ hr {
     left: 0;
     width: 80%;
     scale: 1.5;
-    background-color: yellow;
+    background-color: rgb(253, 215, 27);
 }
 
 
