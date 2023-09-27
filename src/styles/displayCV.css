@@ -1,24 +1,56 @@
+:root{
+    --accentColor:#FDD71B;
+    --colorOne: #474545;
+    --colorTwo: white
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url(../fonts/Poppins-Regular.ttf);
+  }
+
+@font-face {
+    font-family: 'PoppinsBold';
+    src: url(../fonts/Poppins-Bold.ttf);
+}
+@font-face {
+    font-family: 'PoppinsLight';
+    src: url(../fonts/Poppins-Light.ttf);
+}
+@font-face {
+    font-family: 'PoppinsItalic';
+    src: url(../fonts/Poppins-Italic.ttf);
+}
+
 .base {
     display: flex;
-    padding: 3px;
+    background-color: var(--colorOne);
+    font-family: 'Poppins';
+    font-size: small;
 }
 
 hr {
-    border-top: 1px solid #FDD71B;
+    background-color: var(--accentColor);
+    border: none;
+    height: 2px;
 }
 
 .leftContainerDisplay {
     padding: 3px;
     display: flex;
     flex-direction: column;
-    background-color: #383636;
+    background-color: var(--colorOne);
     position: relative;
     z-index: 30;
-
+    color: var(--colorTwo);
+    margin-left: 5pt;
 }
 
+.cv-description {
+    font-family: 'PoppinsLight';
+    margin: 10pt;
+}
 .cvImage {
-    border: 5px solid white;
+    border: 5px solid var(--colorTwo);
     max-width: 9rem;
     margin: 2rem 0;
 }
@@ -34,13 +66,13 @@ hr {
 }
 
 .icon-info>.fa-solid {
-    background-color: #FDD71B;
-    color: #383636;
+    background-color: var(--accentColor);
+    color: var(--colorOne);
     padding: 2px;
     border-radius: 2px;
     width: 1.1rem;
     height: 1.1rem;
-    margin-right: 1rem;
+    margin-right: 3pt;
 }
 
 .highlights {
@@ -59,15 +91,17 @@ hr {
 }
 
 .rightContainerDisplay {
-    background-color: white;
-    color: #474545;
-    padding: 2rem;
+    background-color: var(--colorTwo);
+    color: var(--colorOne);
+    padding: 2rem 10pt;
+    padding-left: 15pt;
 }
 
 .heading-info {
     text-align: center;
     position: relative;
     z-index: 20;
+    font-family: 'PoppinsBold';
 }
 
 .heading-info::before {
@@ -79,10 +113,16 @@ hr {
     left: 0;
     width: 80%;
     scale: 1.5;
-    background-color: rgb(253, 215, 27);
+    background-color: var(--accentColor);
 }
 
+.bold-font {
+    font-family: 'PoppinsBold';
+}
 
+.italic-font {
+    font-family: 'PoppinsItalic';
+}
 
 
 /* CHANGE THISSSS */

@@ -164,7 +164,7 @@ const PDFGenerator = ({handleShowPdf}) => {
       marginLeft:'0',
       height:'3.5cm',
       justifyContent:'center',
-      gap:'7mm',
+      gap:'5mm',
       fontFamily:'PoppinsBold',
     },
     name:{
@@ -257,7 +257,7 @@ const PDFGenerator = ({handleShowPdf}) => {
   );
   return (
     <>
-      <button onClick={handleShowPdf}>back</button>
+      <button className='backBtn' onClick={handleShowPdf}>Back to CV Maker</button>
         <PDFViewer className='PDFViewer'>
           <MyDocument />
         </PDFViewer>

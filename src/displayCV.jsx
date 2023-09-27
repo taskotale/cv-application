@@ -104,7 +104,7 @@ const getTimeline = (timeline) => {
     return (
         <ul key={uuid()}>
             <hr />
-            <h3>{sectionName}</h3>
+            <h3 className='bold-font'>{sectionName}</h3>
             {showListSections.length > 1 && <hr />}
             {showListSections}
         </ul>
@@ -118,9 +118,9 @@ const getSection = (section) => {
         <li key={uuid()}>
             <i>{section[keys[1]]}</i> 
             <br />
-            <i>{section[keys[2]]}</i>
+            <i className='italic-font'>{section[keys[2]]}</i>
             <br />
-            <strong>{section[keys[0]]}</strong>
+            <strong className='bold-font'>{section[keys[0]]}</strong>
             <p>{section[keys[3]]}</p>
         </li>
     )

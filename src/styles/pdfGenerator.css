@@ -1,18 +1,16 @@
-#pdf {
-    position: absolute;
-    z-index: 50;
-}
-
 .PDFViewer {
     height: 90svh;
-    width: 90svw;
+    width: 95svw;
+    position: absolute;
+    border: none;
 }
 
-.pdf-down {
-    background-color: red;
-    position: relative;
+.backBtn {
+    position: absolute;
     z-index: 99;
-    top: 0;
-    right: 0;
+    top: 1pt;
+    background-color: var(--accentColor);
+    color: var(--colorOne);
+    border: none;
+    border-radius: 3px;
 }
-
