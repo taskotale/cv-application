@@ -16,7 +16,7 @@ export default function NavBtns({person, setHandle}) {
   const infoBtn =  (
     <Button
     key={uuid()}
-    name='Info'
+    name='Change Info'
     location='info' 
     setHandle={setHandle}
     />
@@ -59,7 +59,10 @@ export default function NavBtns({person, setHandle}) {
         
         return (
           <>
-    <div>{infoBtn}</div>
+    <div className='nav-section'>
+      <i>Info</i>
+      {infoBtn}
+      </div>
     <div className='nav-section'>
       <i>Timeline</i>
       {timelineBtns}
@@ -74,6 +77,12 @@ export default function NavBtns({person, setHandle}) {
       }
       >Add new</button>
     </div>
+    <div className='nav-section'>
+      <i>Color Scheme</i>
+                <button className='change-colors' onClick={()=>{
+                  setHandle('color', null)
+                  }}>Pick colors</button>
+              </div>
     </>
   )
 

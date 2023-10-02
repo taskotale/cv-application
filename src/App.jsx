@@ -6,8 +6,8 @@ import EditInfo from './editInfo.jsx'
 import EditTimelines from './editTimeline.jsx'
 import NavBtns from './nav.jsx'
 import person from './data.jsx'
+import PickColorScheme from '../editColorScheme.jsx'
 import './styles/App.css'
-
 
 
 import PDFGenerator from './pdfGenerator.jsx'
@@ -22,7 +22,6 @@ export default function App() {
   const [showPdf, setShowPdf] = useState(false)
   const [colorScheme, setColorScheme] = useState(person.colorScheme)
 
-  console.log(colorScheme)
   const changeInfo = (key, value) => {
     const updated = {
       ...editInfo,
@@ -104,16 +103,6 @@ export default function App() {
                 person={person}
                 setHandle={changeFieldToEdit}
               />
-              <div>
-                <button className='change-colors' onClick={()=>{
-                  const test = document.getElementById('root')
-                  test.style='--colorTwo: red;'
-                  person.colorScheme.main = 'red'
-                  setColorScheme({
-                    ...person.colorScheme,
-                  })
-                  console.log(test)}}>Colors</button>
-              </div>
               
               <div>
                 <button className='btn-pdf' onClick={handleShowPdf}>Look PDF</button> 
@@ -130,12 +119,18 @@ export default function App() {
               <EditTimelines
                 timeline = {editTimeline}
                 onChange= {changeTimeline} 
-              />: <EditHighlights
+              />:
+              fieldToEdit[0] === 'highlights'? 
+              <EditHighlights
                 highlight = {editHighlights}
                 onChange = {changeHighlight}
                 changeName ={changeHighlightName}
                 setHandle={changeFieldToEdit}
-              />     
+              />:
+              <PickColorScheme 
+                colorScheme = {colorScheme}
+                changeColors = {setColorScheme}
+              />   
               }
               
             </section>

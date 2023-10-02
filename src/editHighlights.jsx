@@ -2,7 +2,6 @@ import addNewHighlightBtn from './addNewHighlightBtn'
 import './styles/editNameSection.css'
 import { useState } from 'react'
 
-
 export default function EditHighlights ({highlight, onChange, changeName, setHandle}) {
     const [newHighlight, setNewHighlight] = useState(false)
     const [showEditName, setShowEditName] = useState(false)
@@ -118,10 +117,10 @@ export default function EditHighlights ({highlight, onChange, changeName, setHan
             setNewHighlight(show)
         }
     }
-
+    
     return (
         <div>
-            <div>
+            <div >
                 {title}
                 {showNameEdit}
             </div>
