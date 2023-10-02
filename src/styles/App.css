@@ -16,6 +16,13 @@ p {
   gap: 1rem;
 }
 
+.btn-pdf {
+  background-color: var(--accentColor);
+  color: var(--colorOne);
+  border: none;
+  border-radius: 3px;
+}
+
 section  {
   display: flex;
   flex-direction: column;
@@ -28,11 +35,6 @@ button {
   margin: 0.5rem;
 }
 
-.card-item {
-  border: salmon 3px solid;
-  border-radius: 5px;
-}
-
 .hover {
   background-color: blue;
 }
@@ -40,5 +42,11 @@ button {
 .displayCV {
   height: 90svh;
   overflow: scroll;
+}
+
+.nav-section {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
 }
 

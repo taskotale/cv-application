@@ -1,3 +1,8 @@
+.edit-field {
+    display: flex;
+    flex-direction: column;
+}
+
 .highlight-name {
     position: relative;
 }
@@ -25,9 +30,6 @@
     opacity: 0
 }
 
-.highlight-name-edit {
-
-}
 
 .highlight-name-edit-input {
     border: none;

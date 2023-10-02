@@ -13,7 +13,6 @@ export default function EditInfo ({info, change}) {
     const rowHeight = 15;
     const trows = Math.ceil(height/rowHeight) -1;
     if(trows) {
-      console.log(trows)
       setTextareaHeight(trows)
     }
   }
@@ -27,8 +26,9 @@ export default function EditInfo ({info, change}) {
   const show = []
 
   for(const key in text) {
-    show.push(
-      <div key={key}>
+    if(key !== 'image')
+    {show.push(
+      <div className="edit-field" key={key}>
           <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
           <textarea
               rows={descriptionHeight(key)}
@@ -43,7 +43,22 @@ export default function EditInfo ({info, change}) {
               }
           />
       </div>
-    )
+    )}
+    else{
+      show.push(
+      <div className="edit-field" key={key}>
+        <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
+        <input 
+          type="file"
+          accept="image/*"
+          id={key}
+          name={key}
+          onChange={e=>{
+            change(key, URL.createObjectURL(...e.target.files))
+          }}
+          />
+      </div>)
+    }
   }
   
   return show

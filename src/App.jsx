@@ -103,7 +103,11 @@ export default function App() {
                 setHandle={changeFieldToEdit}
               />
               <div>
-                <button onClick={handleShowPdf}>Look PDF</button> 
+                <button className='change-colors'>Colors</button>
+              </div>
+              
+              <div>
+                <button className='btn-pdf' onClick={handleShowPdf}>Look PDF</button> 
               </div>
 
             </section>

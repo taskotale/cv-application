@@ -8,7 +8,6 @@ export default function DisplayCV ({data}) {
     const personalDetails = getPersonalDetails(data.info)
     const highlights = getHighlights(data.highlights)
     const timelines = getTimelines(data.timelines)
-
     return (
         <div className='base' id='pdf-content'>
             <div className="leftContainerDisplay">

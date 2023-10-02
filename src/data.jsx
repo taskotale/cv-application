@@ -9,8 +9,8 @@ const person = {
         email: 'taskotale@gmail.com',
         web: 'mujic.me',
         address: 'Carlstadt, NJ',
-        image: './src/static/img.jpg',
         description: 'Experienced and detail-oriented professional transitioning into software development. Strong problem-solving skills, adept at multitasking. Enthusiastic team player committed to seamless operations and impactful contributions in software development.',
+        image: './src/static/img.jpg',
     },
     highlights: [
             {

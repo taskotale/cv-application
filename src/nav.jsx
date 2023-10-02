@@ -60,11 +60,11 @@ export default function NavBtns({person, setHandle}) {
         return (
           <>
     <div>{infoBtn}</div>
-    <div>
+    <div className='nav-section'>
       <i>Timeline</i>
       {timelineBtns}
     </div>
-    <div>
+    <div className='nav-section'>
       <i>Highlights</i>
       {highlightsBtns}
       <button

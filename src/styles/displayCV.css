@@ -73,6 +73,9 @@ hr {
     width: 1.1rem;
     height: 1.1rem;
     margin-right: 3pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .highlights {
@@ -95,6 +98,7 @@ hr {
     color: var(--colorOne);
     padding: 2rem 10pt;
     padding-left: 15pt;
+    padding-top: 40pt;
 }
 
 .heading-info {
