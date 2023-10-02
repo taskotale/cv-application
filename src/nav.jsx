@@ -36,6 +36,7 @@ export default function NavBtns({person, setHandle}) {
       if(highlight) {
       return (
         <div
+          className=''
           key={highlight.name}
           onMouseEnter={(e)=>setIsHovered(e.target.lastChild.hidden=false)}
           onMouseLeave={(e)=>setIsHovered(e.target.lastChild.hidden=true)}

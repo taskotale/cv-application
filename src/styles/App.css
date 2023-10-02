@@ -50,4 +50,25 @@ button {
   width: fit-content;
 }
 
+.color-edit {
+  display: flex;
+  align-items: center;
+}
+
+.color-sample {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+}
+
+.color-picker {
+  justify-self: center;
+  
+}
+
+.edit,
+.nav {
+   padding-top: 1rem;
+   padding-left: 3pt;
+}
 

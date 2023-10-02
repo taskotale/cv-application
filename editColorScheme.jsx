@@ -2,37 +2,85 @@ import { useState } from "react"
 import { HexColorPicker } from "react-colorful"
 
 export default function PickColorScheme({colorScheme, changeColors}){
-    const [color, setColor] = useState(null)
+    const [showAccentPicker, setShowAccentPicker] = useState(false)
+    const [showMainPicker, setShowMainPicker] = useState(false)
+    const [showAlternativePicker, setShowAlternativePicker] = useState(false)
+
 
     const colors = colorScheme
-    console.log(colors)
     
-
     return (
         <div>
-            <div>
+            <div className="color-edit">
                 <i>Main Color</i>
-                <button style={{ backgroundColor: colors.main}}>Change</button>
+                <button
+                onClick={()=>{
+                    setShowAlternativePicker(false)
+                    setShowMainPicker(!showMainPicker)
+                    setShowAccentPicker(false)
+                }}
+                >Change</button>
+                <div className="color-sample" style={{ backgroundColor: colors.main}}></div>
             </div>
-            <div>
+            <div className="color-edit">
                 <i>Second Color</i>
-                <button style={{ backgroundColor: colors.alternative}}>Change</button>
-            </div>
-            <div>
-                <i>Accent Color</i>
                 <button 
                 onClick={()=>{
-                    const newColors = {
-                        ...colors, 
-                        accent: 'red'
-                    }
-                    const onDisplayColor = document.getElementById('root')
-                    onDisplayColor.style.setProperty('--accentColor','red')
-                    changeColors(newColors)
-                }
-                }
-                style={{ backgroundColor: colors.accent}}>Change</button>
+                    setShowAlternativePicker(!showAlternativePicker)
+                    setShowMainPicker(false)
+                    setShowAccentPicker(false)
+                }}
+                >Change</button>
+                <div className="color-sample" style={{ backgroundColor: colors.alternative}}></div>
             </div>
+            <div className="color-edit">
+                <i>Accent Color</i>
+                <button
+                
+                    onClick={()=>{
+                        setShowAlternativePicker(false)
+                        setShowMainPicker(false)
+                        setShowAccentPicker(!showAccentPicker)
+                    }
+                    }
+                    >Change
+                </button>
+                <div className="color-sample" style={{ backgroundColor: colors.accent}}></div>
+                
+            </div>
+            {showAccentPicker&&<div className="color-picker">
+                    <HexColorPicker color={colors.accent} onChange={(e)=>{
+                        const newColors = {
+                            ...colors, 
+                            accent: e
+                        }
+                        const onDisplayColor = document.getElementById('root')
+                        onDisplayColor.style.setProperty('--accentColor', e)
+                        changeColors(newColors)
+                        }}/>
+                </div>}
+                {showAlternativePicker&&<div className="color-picker">
+                    <HexColorPicker color={colors.alternative} onChange={(e)=>{
+                        const newColors = {
+                            ...colors, 
+                            alternative: e
+                        }
+                        const onDisplayColor = document.getElementById('root')
+                        onDisplayColor.style.setProperty('--colorOne', e)
+                        changeColors(newColors)
+                        }}/>
+                </div>}
+                {showMainPicker&&<div className="color-picker">
+                    <HexColorPicker color={colors.main} onChange={(e)=>{
+                        const newColors = {
+                            ...colors, 
+                            main: e
+                        }
+                        const onDisplayColor = document.getElementById('root')
+                        onDisplayColor.style.setProperty('--colorOne', e)
+                        changeColors(newColors)
+                        }}/>
+                </div>}
         </div>
     )
 }
