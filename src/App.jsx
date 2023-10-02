@@ -20,7 +20,9 @@ export default function App() {
   const [editTimeline, setEditTimeline] = useState(person.timelines[0])
   const [editHighlights, setEditHighlights] = useState(person.highlights)
   const [showPdf, setShowPdf] = useState(false)
+  const [colorScheme, setColorScheme] = useState(person.colorScheme)
 
+  console.log(colorScheme)
   const changeInfo = (key, value) => {
     const updated = {
       ...editInfo,
@@ -94,7 +96,7 @@ export default function App() {
 
     return (
       <>
-      {showPdf && <PDFGenerator handleShowPdf={handleShowPdf}/>}
+      {showPdf && <PDFGenerator colorScheme={colorScheme} handleShowPdf={handleShowPdf}/>}
       {!showPdf &&
         <div className='main' id='main'> 
             <section className="nav" id='nav' >
@@ -103,7 +105,14 @@ export default function App() {
                 setHandle={changeFieldToEdit}
               />
               <div>
-                <button className='change-colors'>Colors</button>
+                <button className='change-colors' onClick={()=>{
+                  const test = document.getElementById('root')
+                  test.style='--colorTwo: red;'
+                  person.colorScheme.main = 'red'
+                  setColorScheme({
+                    ...person.colorScheme,
+                  })
+                  console.log(test)}}>Colors</button>
               </div>
               
               <div>

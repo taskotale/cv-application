@@ -7,10 +7,6 @@ import boldFont from './fonts/Poppins-Bold.ttf'
 import regularFont from './fonts/Poppins-regular.ttf'
 import italicFont from './fonts/Poppins-Italic.ttf'
 
-const accentColor = '#FDD71B'
-const colorOne = '#474545'
-const colorTwo = 'white'
-
 Font.register({
   family: 'PoppinsThin',
   src:lightFont
@@ -28,7 +24,10 @@ Font.register({
   src:italicFont
 })
 
-const PDFGenerator = ({handleShowPdf}) => {
+const PDFGenerator = ({colorScheme,handleShowPdf}) => {
+  const accentColor = colorScheme.accent
+  const colorOne = colorScheme.alternative
+  const colorTwo = colorScheme.main
 
   //long yellow line on right side
   const YellowLine = () => {

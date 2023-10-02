@@ -63,7 +63,12 @@ const person = {
                     responsibilities: 'sellisng stuff'
                 }
             ]
-    }]
+    }],
+    colorScheme : {
+        main: 'white',
+        alternative: '#474545',
+        accent: '#FDD71B'
+    }
     
 }
 
