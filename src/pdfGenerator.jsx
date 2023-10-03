@@ -4,7 +4,7 @@ import { Document, Font, Image, Line, Page, PDFViewer, Text, Svg, Path, View, St
 
 import lightFont from './fonts/Poppins-Light.ttf'
 import boldFont from './fonts/Poppins-Bold.ttf'
-import regularFont from './fonts/Poppins-regular.ttf'
+// import regularFont from './fonts/Poppins-regular.ttf'
 import italicFont from './fonts/Poppins-Italic.ttf'
 
 Font.register({
@@ -15,10 +15,10 @@ Font.register({
   family: 'PoppinsBold',
   src:boldFont
 })
-Font.register({
-  family: 'Poppins',
-  src:regularFont
-})
+// Font.register({
+//   family: 'Poppins',
+//   src:regularFont
+// })
 Font.register({
   family: 'PoppinsItalic',
   src:italicFont
@@ -105,7 +105,7 @@ const PDFGenerator = ({colorScheme,handleShowPdf}) => {
       flexDirection: 'row',
       width: '21cm',
       height: '29.7cm',
-      fontFamily:'Poppins'
+      //fontFamily:'Poppins'
     },
     boldFont:{
       fontFamily:'PoppinsBold'
