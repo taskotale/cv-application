@@ -37,10 +37,10 @@ const getPersonalDetails = (info) => {
                 <img className='cvImage' src={info.image} alt="person image" />
             </div>
             <div className='basic-info'>
-                <div className='icon-info'><i className="fa-solid fa-phone"></i><div>{info.phone}</div></div>
-                <div className='icon-info'><i className="fa-solid fa-envelope"></i><div>{info.email}</div></div>
-                <div className='icon-info'><i className="fa-solid fa-desktop"></i><div>{info.web}</div></div>
-                <div className='icon-info'><i className="fa-solid fa-location-dot"></i><div>{info.address}</div></div>
+                {info.phone&&<div className='icon-info'><i className="fa-solid fa-phone"></i><div>{info.phone}</div></div>}
+                {info.email &&<div className='icon-info'><i className="fa-solid fa-envelope"></i><div>{info.email}</div></div>}
+                {info.web && <div className='icon-info'><i className="fa-solid fa-desktop"></i><div>{info.web}</div></div>}
+                {info.address && <div className='icon-info'><i className="fa-solid fa-location-dot"></i><div>{info.address}</div></div>}
             </div>
         </div>
     )

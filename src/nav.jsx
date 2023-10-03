@@ -36,7 +36,7 @@ export default function NavBtns({person, setHandle}) {
       if(highlight) {
       return (
         <div
-          className=''
+          className='nav-btn'
           key={highlight.name}
           onMouseEnter={(e)=>setIsHovered(e.target.lastChild.hidden=false)}
           onMouseLeave={(e)=>setIsHovered(e.target.lastChild.hidden=true)}
@@ -54,10 +54,7 @@ export default function NavBtns({person, setHandle}) {
         </div>
         )
       }
-    }
-
-      )
-        
+    }) 
         return (
           <>
     <div className='nav-section'>
@@ -71,13 +68,13 @@ export default function NavBtns({person, setHandle}) {
     <div className='nav-section'>
       <i>Highlights</i>
       {highlightsBtns}
-      <button
+    </div>
+      <button className='nav-section'
       onClick={()=> {
         addNewHighlightBtn(setHandle)
       }
       }
       >Add new</button>
-    </div>
     <div className='nav-section'>
       <i>Color Scheme</i>
                 <button className='change-colors' onClick={()=>{

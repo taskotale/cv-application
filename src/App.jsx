@@ -6,7 +6,7 @@ import EditInfo from './editInfo.jsx'
 import EditTimelines from './editTimeline.jsx'
 import NavBtns from './nav.jsx'
 import person from './data.jsx'
-import PickColorScheme from '../editColorScheme.jsx'
+import PickColorScheme from './editColorScheme.jsx'
 import './styles/App.css'
 
 

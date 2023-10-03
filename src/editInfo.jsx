@@ -26,8 +26,8 @@ export default function EditInfo ({info, change}) {
   const show = []
 
   for(const key in text) {
-    if(key !== 'image')
-    {show.push(
+    if(key !== 'image'){
+      show.push(
       <div className="edit-field" key={key}>
           <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
           <textarea
@@ -37,7 +37,7 @@ export default function EditInfo ({info, change}) {
               defaultValue={text[key]}
               onClick={(e)=>changeHeight(e.target)}
               onChange={(e)=> {
-                  changeHeight(e.target)
+                  if (key==='description')changeHeight(e.target)
                   change(key,e.target.value)
                   }
               }

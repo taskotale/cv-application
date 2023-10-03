@@ -22,11 +22,13 @@
 }
 
 .base {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
     background-color: var(--colorOne);
     font-family: 'Poppins';
     font-size: small;
-
+    width: 100%;
+    overflow-wrap:normal;
 }
 
 hr {

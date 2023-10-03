@@ -15,12 +15,18 @@ export default function PickColorScheme({colorScheme, changeColors}){
                 <i>Main Color</i>
                 <button
                 onClick={()=>{
-                    setShowAlternativePicker(false)
                     setShowMainPicker(!showMainPicker)
+                    setShowAlternativePicker(false)
                     setShowAccentPicker(false)
                 }}
                 >Change</button>
-                <div className="color-sample" style={{ backgroundColor: colors.main}}></div>
+                <div className="color-sample" 
+                        onClick={()=>{
+                            setShowMainPicker(!showMainPicker)
+                            setShowAlternativePicker(false)
+                            setShowAccentPicker(false)
+                        }}
+                        style={{ backgroundColor: colors.main}}></div>
             </div>
             <div className="color-edit">
                 <i>Second Color</i>
@@ -31,12 +37,15 @@ export default function PickColorScheme({colorScheme, changeColors}){
                     setShowAccentPicker(false)
                 }}
                 >Change</button>
-                <div className="color-sample" style={{ backgroundColor: colors.alternative}}></div>
+                <div className="color-sample" onClick={()=>{
+                    setShowAlternativePicker(!showAlternativePicker)
+                    setShowMainPicker(false)
+                    setShowAccentPicker(false)
+                }} style={{ backgroundColor: colors.alternative}}></div>
             </div>
             <div className="color-edit">
                 <i>Accent Color</i>
                 <button
-                
                     onClick={()=>{
                         setShowAlternativePicker(false)
                         setShowMainPicker(false)
@@ -45,7 +54,14 @@ export default function PickColorScheme({colorScheme, changeColors}){
                     }
                     >Change
                 </button>
-                <div className="color-sample" style={{ backgroundColor: colors.accent}}></div>
+                <div className="color-sample" 
+                        onClick={()=>{
+                            setShowAlternativePicker(false)
+                            setShowMainPicker(false)
+                            setShowAccentPicker(!showAccentPicker)
+                        }
+                        }
+                        style={{ backgroundColor: colors.accent}}></div>
                 
             </div>
             {showAccentPicker&&<div className="color-picker">
@@ -77,7 +93,7 @@ export default function PickColorScheme({colorScheme, changeColors}){
                             main: e
                         }
                         const onDisplayColor = document.getElementById('root')
-                        onDisplayColor.style.setProperty('--colorOne', e)
+                        onDisplayColor.style.setProperty('--colorTwo', e)
                         changeColors(newColors)
                         }}/>
                 </div>}

@@ -2,25 +2,11 @@
   margin: 0 ;
   padding: 2rem;
   width: 100%;
+  height: 100%;
 }
 
 p {
   margin: 0;
-}
-
-.main {
-  height: 90svh;
-  display: grid;
-  justify-content: space-around;
-  grid-template-columns: 1fr 2fr 4fr;
-  gap: 1rem;
-}
-
-.btn-pdf {
-  background-color: var(--accentColor);
-  color: var(--colorOne);
-  border: none;
-  border-radius: 3px;
 }
 
 section  {
@@ -35,8 +21,11 @@ button {
   margin: 0.5rem;
 }
 
-.hover {
-  background-color: blue;
+.btn-pdf {
+  background-color: var(--accentColor);
+  color: var(--colorOne);
+  border: none;
+  border-radius: 3px;
 }
 
 .displayCV {
@@ -44,10 +33,28 @@ button {
   overflow: scroll;
 }
 
+.hover {
+  background-color: blue;
+}
+
+.main {
+  height: 90svh;
+  display: grid;
+  justify-content: space-around;
+  grid-template-columns: 1fr 2fr 4fr;
+  gap: 1rem;
+}
+
 .nav-section {
   display: flex;
   flex-direction: column;
   width: fit-content;
+}
+
+.nav-btn {
+  display: flex;
+  width: fit-content;
+  margin-right: 0;
 }
 
 .color-edit {
@@ -70,5 +77,6 @@ button {
 .nav {
    padding-top: 1rem;
    padding-left: 3pt;
+   overflow: hidden;
 }
 
