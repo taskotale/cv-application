@@ -201,7 +201,7 @@ const PDFGenerator = ({colorScheme,handleShowPdf}) => {
     <Document>
       <Page size="A4" style={styles.page} wrap={true}>
         <View style={styles.leftContainerDisplay}>
-          <Image src={person.info.image} style={styles.image} />
+          {person.info.image&&<Image src={person.info.image} style={styles.image} />}
           {person.info.phone && <View style={styles.iconInfo}>
             <Svg style={styles.icon} viewBox='-100 -100 700 700' >
               <Path
