@@ -57,7 +57,7 @@ export default function EditTimelines ({timeline, onChange}) {
           addNewObj(newData, text.name)
         }
         }
-        >Add field</button>
+        >Add Section</button>
       </form>
     )
     return form
@@ -67,7 +67,7 @@ export default function EditTimelines ({timeline, onChange}) {
     <button
       onClick={()=>setNewTimeline(addNewTimelineForm(text.list[0]))}
     >
-      Add more
+      Add Section
     </button>
   )
 
