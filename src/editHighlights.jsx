@@ -29,6 +29,7 @@ export default function EditHighlights ({highlight, onChange, changeName, setHan
                         onClick={()=>showEditName === false ? setShowEditName(editName()): setShowEditName(false)}
                         >{text.name}
                         <div className='name-hover-message'>Click to edit</div>
+                        <i className="fa-solid fa-pen-to-square"></i>
                     </div>
                 </>
 
@@ -122,9 +123,8 @@ export default function EditHighlights ({highlight, onChange, changeName, setHan
     return (
         <div >
             <div >
-                {title}
+                {!showNameEdit && title}
                 {showNameEdit}
-                
             </div>
             {fields}
             <div >
