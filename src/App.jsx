@@ -60,8 +60,8 @@ export default function App() {
     setEditTimeline({...newTimeline})
   }
   
-  const changeHighlightName = (name, newName) => {
-    const nameToUpdate = person.highlights.find(highlight=>highlight.name === name)
+  const changeHighlightName = (key, newName) => {
+    const nameToUpdate = person.highlights.find(highlight=>highlight.key === key)
     nameToUpdate.name = newName;
     setEditHighlights({
       ...nameToUpdate,
@@ -91,7 +91,7 @@ export default function App() {
       setEditTimeline(newT)
     }
     if (location === 'highlights') {
-      const newH = person[location].find((highlight) => highlight.name === field)
+      const newH = person[location].find((highlight) => highlight.key === field)
       setEditHighlights(newH)
     }
     setFieldToEdit([location, field])

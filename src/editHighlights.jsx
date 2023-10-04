@@ -38,7 +38,8 @@ export default function EditHighlights ({highlight, onChange, changeName, setHan
                         className='highlight-name-edit-input'
                         defaultValue={text.name}
                         onChange={(e)=>{
-                            changeName(text.name, e.target.value)
+                            console.log(text.key)
+                            changeName(text.key, e.target.value)
                         }}
                     >
                     </input>

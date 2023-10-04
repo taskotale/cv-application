@@ -2,6 +2,7 @@ import { v4 as uuid } from 'uuid';
 import person from './data.jsx'
 import { useState } from 'react';
 import addNewHighlightBtn from './addNewHighlightBtn.jsx';
+import Button from './nabBtns.jsx';
 
 
 const deleteHighlight = (key,changeScreen) => {
@@ -33,24 +34,25 @@ export default function NavBtns({person, setHandle}) {
       })
       
     const highlightsBtns = person.highlights.map((highlight)=>{
+      console.log(highlight)
       if(highlight) {
       return (
         <div
           className='nav-btn'
-          key={highlight.name}
-          onMouseEnter={(e)=>setIsHovered(e.target.lastChild.hidden=false)}
-          onMouseLeave={(e)=>setIsHovered(e.target.lastChild.hidden=true)}
+          key={highlight.key}
+          onMouseEnter={()=>setIsHovered(highlight.key)}
+          onMouseLeave={()=>setIsHovered(false)}
         >
         <Button
         key={uuid()}
+        id={highlight.key}
         name={highlight.name}
         location={'highlights'}
         setHandle={setHandle}     
         />
-        <button
-        hidden={true}
-        onClick={()=>deleteHighlight(highlight.key, setHandle)}
-        >X</button>
+        {isHovered===highlight.key &&<button
+          onClick={()=>deleteHighlight(highlight.key, setHandle)}
+        >X</button>}
         </div>
         )
       }
@@ -83,16 +85,4 @@ export default function NavBtns({person, setHandle}) {
               </div>
     </>
   )
-
-
-  function Button({name, location, setHandle}) {
-    const handleClick = setHandle
-    return (
-      <button className='nav-btn' id={name} key={uuid()}
-      onClick={()=> {
-        handleClick(name, location)
-      }}
-      >{name}</button>
-    )
-  } 
 }
