@@ -26,6 +26,7 @@ export default function NavBtns({person, setHandle}) {
       return (
         <Button
         key={uuid()}
+        id={timeline.key}
         name={timeline.name}
         location={'timelines'}
         setHandle={setHandle}
@@ -34,7 +35,6 @@ export default function NavBtns({person, setHandle}) {
       })
       
     const highlightsBtns = person.highlights.map((highlight)=>{
-      console.log(highlight)
       if(highlight) {
       return (
         <div

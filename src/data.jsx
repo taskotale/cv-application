@@ -46,7 +46,8 @@ const person = {
                     Learned essential computer science concepts and gained hands-on experience with programming languages such as C, Python, and web technologies like HTML, CSS, and JavaScript. Additionally, the course covered algorithms, data structures, and introduced me to the world of web development with practical projects using frameworks like Flask and SQL for database management.`,
                     key: uuid()
                 }
-            ]
+            ],
+            key:uuid()
         },
         {
             name: 'Experience',
@@ -65,7 +66,8 @@ const person = {
                     responsibilities: 'sellisng stuff',
                     key: uuid()
                 }
-            ]
+            ],
+            key:uuid()
     }],
     colorScheme : {
         main: 'white',

@@ -67,7 +67,7 @@ export default function App() {
       ...nameToUpdate,
       name: newName,
     })
-    changeFieldToEdit(newName, 'highlights')
+    changeFieldToEdit(nameToUpdate.key, 'highlights')
   }
 
   const changeHighlight = (highlight, value, index) => {
@@ -87,7 +87,7 @@ export default function App() {
   
   const changeFieldToEdit = (field, location) => {
     if (location === 'timelines') {
-      const newT = person[location].find((timeline) => timeline.name === field)
+      const newT = person[location].find((timeline) => timeline.key === field)
       setEditTimeline(newT)
     }
     if (location === 'highlights') {
