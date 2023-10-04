@@ -19,12 +19,14 @@ export default function EditTimelines ({timeline, onChange}) {
         key={field.key}
       >
         {listKeys(field, onChange, index, data.name, isHovered)}
-        {isHovered == field.key && <button 
-                                      className="btn-delete"
-                                      onClick={()=>{
-                                        onChange('delete', index, data.name)
-                                      }}
-                                    >X</button>}
+        <button 
+              className="btn-delete"
+              onClick={()=>{
+                onChange('delete', index, data.name)
+              }}
+            >X
+        </button>
+                                    
       </div>
       
     )
@@ -101,8 +103,8 @@ export default function EditTimelines ({timeline, onChange}) {
     <button
     className="btn-add-new-timeline"
       onClick={()=>{
-        setNewTimeline(addNewTimelineForm(data.list[0]))
-      }
+          setNewTimeline(addNewTimelineForm(data.list[0]))
+        }
       }
     >
       Add New Section
