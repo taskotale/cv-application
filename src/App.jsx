@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState } from 'react'
 import DisplayCV from './displayCV.jsx'
 import EditHighlights from './editHighlights.jsx'
@@ -109,11 +108,9 @@ export default function App() {
                 person={person}
                 setHandle={changeFieldToEdit}
               />
-              
               <div>
                 <button className='btn-pdf' onClick={handleShowPdf}>Look PDF</button> 
               </div>
-
             </section>
             <section className="edit" id="editCV">
               {fieldToEdit[0]==='info'?

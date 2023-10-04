@@ -1,6 +1,7 @@
 import addNewHighlightBtn from './addNewHighlightBtn'
 import './styles/editNameSection.css'
 import { useState } from 'react'
+import { v4 as uuid } from 'uuid'
 
 
 export default function EditHighlights ({highlight, onChange, changeName, setHandle}) {
@@ -11,7 +12,7 @@ export default function EditHighlights ({highlight, onChange, changeName, setHan
     if(!text) {
         return (
             <div>
-                <h4 >You have no highlights</h4>
+                <h4>You have no highlights</h4>
                 <button
                     onClick={()=> {
                         addNewHighlightBtn(setHandle)
@@ -38,7 +39,6 @@ export default function EditHighlights ({highlight, onChange, changeName, setHan
                         className='highlight-name-edit-input'
                         defaultValue={text.name}
                         onChange={(e)=>{
-                            console.log(text.key)
                             changeName(text.key, e.target.value)
                         }}
                     >
