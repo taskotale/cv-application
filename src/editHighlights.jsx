@@ -1,7 +1,6 @@
 import addNewHighlightBtn from './addNewHighlightBtn'
 import './styles/editNameSection.css'
 import { useState } from 'react'
-import { v4 as uuid } from 'uuid';
 
 
 export default function EditHighlights ({highlight, onChange, changeName, setHandle}) {
@@ -35,17 +34,17 @@ export default function EditHighlights ({highlight, onChange, changeName, setHan
     const editName = () => {
         return (
                 <div key={text.key}>
-                        <input
+                    <input
                         className='highlight-name-edit-input'
                         defaultValue={text.name}
                         onChange={(e)=>{
                             changeName(text.name, e.target.value)
                         }}
-                        >
-                        </input>
+                    >
+                    </input>
                 </div> 
                 )
-        }
+    }
 
     let showNameEdit = showEditName
     if(showEditName.key !== text.key) {
@@ -124,6 +123,7 @@ export default function EditHighlights ({highlight, onChange, changeName, setHan
             <div >
                 {title}
                 {showNameEdit}
+                
             </div>
             {fields}
             <div >
