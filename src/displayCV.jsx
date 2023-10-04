@@ -115,10 +115,8 @@ const getSection = (section) => {
     const keys = Object.keys(section)
     return (  
         <li key={uuid()}>
-            <i>{section[keys[1]]}</i> 
-            <br />
-            <i className='italic-font'>{section[keys[2]]}</i>
-            <br />
+            {section[keys[1]] && <><i>{section[keys[1]]}</i><br /></>}
+            {section[keys[2]] && <><i className='italic-font'>{section[keys[2]]}</i><br /></>}
             <strong className='bold-font'>{section[keys[0]]}</strong>
             <p>{section[keys[3]]}</p>
         </li>

@@ -99,3 +99,23 @@ section  {
   flex-direction: column;
 }
 
+
+.btn-delete {
+  position: relative;
+  left: 85%;
+}
+
+.btn-add-new-timeline {
+  border: none;
+  background-color: var(--accentColor);
+  color: var(--colorOne);
+  margin-bottom: 15pt;
+  align-self: center;
+}
+
+.edit-timelines-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
