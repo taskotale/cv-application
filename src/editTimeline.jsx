@@ -5,14 +5,22 @@ import TextArea from "./textareaHight"
 
 export default function EditTimelines ({timeline, onChange}) {
   const [newTimeline, setNewTimeline] = useState(false)
+  const [accordion, setAccordion] = useState(false)
 
   const data = timeline
   
   const title = <h2>{data.name}</h2>
   const fields = []
   data.list.map((field, index)=>{
+    console.log(field)
     fields.push(
-      <div
+      <>
+     <div className="accordion-collapsed"
+        onClick={()=>accordion!==field.key?setAccordion(field.key):setAccordion(false)}>
+        {field[Object.keys(field)[0]]}
+      </div>
+      {accordion === field.key && <div
+        className='accordion-element'
         key={field.key}
       >
         {listKeys(field, onChange, index, data.name)}
@@ -22,9 +30,9 @@ export default function EditTimelines ({timeline, onChange}) {
                 onChange('delete', index, data.name)
               }}
             >X
-        </button>
-                                    
-      </div>
+        </button>                           
+      </div>}
+      </>
       
     )
     if (index !== data.list.length -1) {
