@@ -2,6 +2,8 @@ import './styles/pdfGenerator.css';
 import person from './data.jsx'
 import { Document, Font, Image, Line, Page, PDFViewer, Text, Svg, Path, View, StyleSheet } from '@react-pdf/renderer';
 
+
+
 import lightFont from './fonts/Poppins-Light.ttf'
 import boldFont from './fonts/Poppins-Bold.ttf'
 import regularFont from './fonts/Poppins-Regular.ttf'
@@ -195,7 +197,7 @@ const PDFGenerator = ({colorScheme,handleShowPdf}) => {
     }
     
   });
-  
+  console.log(person.info.image)
   // Create Document Component
   const MyDocument = () => (
     <Document>

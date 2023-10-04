@@ -1,49 +1,38 @@
+// import { useState } from "react"
+import TextArea from "./textareaHight";
 
-
-// wont work if I add keys with uuid
-
-import { useState } from "react"
 
 export default function EditInfo ({info, change}) {
 
-  const [textareaHeight, setTextareaHeight] = useState(1)
-
-  const changeHeight = (box) => {
-    const height = box.scrollHeight;
-    const rowHeight = 15;
-    const trows = Math.ceil(height/rowHeight) -1;
-    if(trows) {
-      setTextareaHeight(trows)
-    }
-  }
-
-  const descriptionHeight = (key) => {
-    if(key !== 'description') return 1
-    else return textareaHeight
-  }
-
-  const text = info
+  const data = info
   const show = []
 
-  for(const key in text) {
-    if(key !== 'image'){
+  for(const key in data) {
+    if(key !== 'image' && key !== 'description'){
       show.push(
       <div className="edit-field" key={key}>
           <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
-          <textarea
-              rows={descriptionHeight(key)}
+          <input
               id={key}
               name={key} 
-              defaultValue={text[key]}
-              onClick={(e)=>changeHeight(e.target)}
+              defaultValue={data[key]}
               onChange={(e)=> {
-                  if (key==='description')changeHeight(e.target)
                   change(key,e.target.value)
                   }
               }
           />
       </div>
     )}
+    else if (key === 'description') {
+      show.push(
+        <TextArea 
+          key={key}
+          section={key}
+          data={data}
+          change={change}
+        />
+      )
+    }
     else{
       show.push(
       <div className="edit-field" key={key}>

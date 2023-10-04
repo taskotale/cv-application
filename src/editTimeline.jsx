@@ -1,4 +1,5 @@
 import { useState } from "react"
+import TextArea from "./textareaHight"
 
 export default function EditTimelines ({timeline, onChange}) {
   const [newTimeline, setNewTimeline] = useState(false)
@@ -19,8 +20,9 @@ export default function EditTimelines ({timeline, onChange}) {
   const addNewTimelineForm = (timeline) => {
     const show = []
     for(const key in timeline) {
+      console.log(timeline)
       show.push(
-        <div className="formField" key={key}>
+        <div className="form-field" key={key}>
           <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
           <input
             id={key}
@@ -81,13 +83,14 @@ export default function EditTimelines ({timeline, onChange}) {
 
   return (
     <div>
-      {title}
-      {fields}
+      <div>
+        {title}
+        {fields}
+      </div>
       <div>
         {addNewBtn}
         {show}
       </div>
-      
     </div>
   )
 }
@@ -97,20 +100,36 @@ export default function EditTimelines ({timeline, onChange}) {
 const listKeys = (timeline, change, index, grandparent) => {
   const show = []
   for(const key in timeline) {
-    show.push(
-      <div key={key}>
-          <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
-          <input
-              id={key}
-              name={key} 
-              defaultValue={timeline[key]} 
-              onChange={(e)=> {
-                  change(key,e.target.value,index, grandparent)
-                  }
-              }
+    console.log(timeline[key]+index)
+    if (key !== 'description' && key !== 'responsibilities') {
+      show.push(
+        <div className="timeline-section" key={key}>
+            <label htmlFor={timeline[key]+index}>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
+            <input
+                id={timeline[key]+index}
+                name={key} 
+                defaultValue={timeline[key]} 
+                onChange={(e)=> {
+                    change(key,e.target.value,index, grandparent)
+                    }
+                }
+            />
+        </div>
+      )
+    } else {
+      show.push(
+        <TextArea
+          key={key} 
+          section={key}
+          data={timeline}
+          change={change}
+          index={index}
+          grandparent={grandparent}
           />
-      </div>
-    )
+      )
+    }
+      
   }
+
   return show
 } 

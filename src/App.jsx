@@ -5,19 +5,17 @@ import EditHighlights from './editHighlights.jsx'
 import EditInfo from './editInfo.jsx'
 import EditTimelines from './editTimeline.jsx'
 import NavBtns from './nav.jsx'
+import PDFGenerator from './pdfGenerator.jsx'
 import person from './data.jsx'
 import PickColorScheme from './editColorScheme.jsx'
 import './styles/App.css'
 
-
 // ADD DATES START AND END
 
-import PDFGenerator from './pdfGenerator.jsx'
 
 
 export default function App() {
   const [fieldToEdit, setFieldToEdit] = useState(['info'])
-  // const [hover, setHover] = useState(false)
   const [editInfo, setEditInfo] = useState(person.info)
   const [editTimeline, setEditTimeline] = useState(person.timelines[0])
   const [editHighlights, setEditHighlights] = useState(person.highlights)
