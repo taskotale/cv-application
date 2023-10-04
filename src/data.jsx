@@ -1,4 +1,5 @@
 import { v4 as uuid } from 'uuid';
+import image from './static/img.jpg'
 
 
 const person = {
@@ -10,7 +11,7 @@ const person = {
         web: 'mujic.me',
         address: 'Carlstadt, NJ',
         description: 'Experienced and detail-oriented professional transitioning into software development. Strong problem-solving skills, adept at multitasking. Enthusiastic team player committed to seamless operations and impactful contributions in software development.',
-        image: './src/static/img.jpg',
+        image: image,
     },
     highlights: [
             {
