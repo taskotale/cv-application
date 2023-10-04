@@ -5,7 +5,6 @@ import TextArea from "./textareaHight"
 
 export default function EditTimelines ({timeline, onChange}) {
   const [newTimeline, setNewTimeline] = useState(false)
-  const [isHovered, setIsHovered] = useState(false)
 
   const data = timeline
   
@@ -14,11 +13,9 @@ export default function EditTimelines ({timeline, onChange}) {
   data.list.map((field, index)=>{
     fields.push(
       <div
-      onMouseEnter={()=>setIsHovered(field.key)}
-      onMouseLeave={()=>setIsHovered(false)}
         key={field.key}
       >
-        {listKeys(field, onChange, index, data.name, isHovered)}
+        {listKeys(field, onChange, index, data.name)}
         <button 
               className="btn-delete"
               onClick={()=>{
@@ -136,15 +133,13 @@ export default function EditTimelines ({timeline, onChange}) {
 
 
   
-const listKeys = (timeline, change, index, grandparent,isHovered) => {
+const listKeys = (timeline, change, index, grandparent) => {
   const show = []
-  let count = 7
   for(const key in timeline) {
-    count += 1
     if (key !== 'description' && key !== 'responsibilities') {
       if (key !=='key') show.push(
         <div className="timeline-section" key={key}>
-            <label htmlFor={timeline[key]+index}>{key.charAt(0).toUpperCase() + key.slice(1)} {count===1&&(isHovered == timeline.key && <button className="btn-">delete</button>)}</label>
+            <label htmlFor={timeline[key]+index}>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
             <input
                 id={timeline[key]+index}
                 name={key} 
