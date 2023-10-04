@@ -9,7 +9,7 @@ const deleteHighlight = (key,changeScreen) => {
   let toDelete = person.highlights.find(highlight=>highlight.key===key)
   let newHighlight = person.highlights.filter(highlight => highlight !== toDelete)
   person.highlights = newHighlight
-  newHighlight.length >0? changeScreen(person.highlights[0].name,'highlights'): changeScreen(false,'highlights')
+  newHighlight.length >0? changeScreen(person.highlights[0].key,'highlights'): changeScreen(false,'highlights')
 }
 
 export default function NavBtns({person, setHandle}) {

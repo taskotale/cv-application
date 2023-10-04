@@ -75,12 +75,14 @@ export default function App() {
       if(value !== '') newList.push(value)
     }
     else {
+      console.log(newHighlight)
       value != ''? newList[index] = value : newList.splice(index,1)
     }
     const newHighlight = {
       ...highlight,
       list: newList,
     }
+    console.log(newHighlight)
     setEditHighlights(newHighlight)
   }
   

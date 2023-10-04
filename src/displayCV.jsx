@@ -2,6 +2,7 @@
 import './styles/displayCV.css'
 import { v4 as uuid } from 'uuid';
 import {Fragment} from 'react'
+import img from './static/img.jpg'
 
 
 export default function DisplayCV ({data}) {
@@ -34,7 +35,7 @@ const getPersonalDetails = (info) => {
     return (
         <div className='cv-personal-details'>
             <div className='cvImg'>
-                {info.image&&<img className='cvImage' src={info.image} alt="person image" />}
+                {info.image&&<img className='cvImage' src={img} alt="person image" />}
             </div>
             <div className='basic-info'>
                 {info.phone&&<div className='icon-info'><i className="fa-solid fa-phone"></i><div>{info.phone}</div></div>}
