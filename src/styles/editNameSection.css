@@ -16,8 +16,9 @@
     border: 1px solid yellow;
     border-radius: 10px;
     padding: 0.25rem ;
-    background-color: black;
-    scale: 0.5;
+    background-color: white;
+    color: black;
+    scale: 0.7;
 }
 
 .highlight-name:hover .name-hover-message {

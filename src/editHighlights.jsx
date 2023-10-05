@@ -1,12 +1,14 @@
 import addNewHighlightBtn from './addNewHighlightBtn'
 import './styles/editNameSection.css'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { v4 as uuid } from 'uuid'
 
 
 export default function EditHighlights ({highlight, onChange, changeName, setHandle}) {
     const [newHighlight, setNewHighlight] = useState(false)
     const [showEditName, setShowEditName] = useState(false)
+
+    const inputRef = useRef(null)
     
     const text = highlight
     if(!text) {
@@ -26,7 +28,10 @@ export default function EditHighlights ({highlight, onChange, changeName, setHan
                     <div
                         key={text.name}
                         className='highlight-name'
-                        onClick={()=>showEditName === false ? setShowEditName(editName()): setShowEditName(false)}
+                        onClick={()=>{
+                            showEditName === false ? setShowEditName(editName()): setShowEditName(false)
+                        }
+                        }
                         >{text.name}
                         <div className='name-hover-message'>Click to edit</div>
                         <i className="fa-solid fa-pen-to-square"></i>
@@ -34,9 +39,13 @@ export default function EditHighlights ({highlight, onChange, changeName, setHan
                 </>
 
     const editName = () => {
+        
         return (
                 <div key={text.key}>
                     <input
+                        autoFocus
+                        ref={inputRef}
+                        id='name-edit'
                         className='highlight-name-edit-input'
                         defaultValue={text.name}
                         onChange={(e)=>{
@@ -44,6 +53,9 @@ export default function EditHighlights ({highlight, onChange, changeName, setHan
                         }}
                     >
                     </input>
+                    <i className="fa-solid fa-pen-to-square"
+                    onClick={()=>setShowEditName(false)}
+                    ></i>
                 </div> 
                 )
     }
