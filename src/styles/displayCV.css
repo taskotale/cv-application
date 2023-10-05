@@ -28,7 +28,7 @@
     font-family: 'Poppins';
     font-size: small;
     width: 100%;
-    overflow-wrap:normal;
+    /* overflow-wrap:normal; */
 }
 
 hr {

@@ -8,7 +8,7 @@ export default function TextArea ({section, data, change, index, grandparent}) {
         const rowHeight = 15;
         const trows = Math.ceil(height/rowHeight) -1;
         if(trows) {
-          setTextareaHeight(trows)
+            trows < 17? setTextareaHeight(trows) : setTextareaHeight(17)
         }
       }
     return (

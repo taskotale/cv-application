@@ -12,17 +12,18 @@ export default function EditTimelines ({timeline, onChange}) {
   const title = <h2>{data.name}</h2>
   const fields = []
   data.list.map((field, index)=>{
-    console.log(field)
     fields.push(
-      <>
-     <div className="accordion-collapsed"
+      <div className="accordion-section">
+      <div className="accordion-collapsed"
         onClick={()=>accordion!==field.key?setAccordion(field.key):setAccordion(false)}>
-        {field[Object.keys(field)[0]]}
+        <div>{field[Object.keys(field)[0]]}</div>
+        <div>{accordion===field.key?<i className="fa-solid fa-down-left-and-up-right-to-center"></i> : <i className="fa-solid fa-up-right-and-down-left-from-center"></i> }</div>
       </div>
       {accordion === field.key && <div
         className='accordion-element'
         key={field.key}
       >
+        <hr style={{height:'1px'}}/>
         {listKeys(field, onChange, index, data.name)}
         <button 
               className="btn-delete"
@@ -32,7 +33,7 @@ export default function EditTimelines ({timeline, onChange}) {
             >X
         </button>                           
       </div>}
-      </>
+      </div>
       
     )
     if (index !== data.list.length -1) {

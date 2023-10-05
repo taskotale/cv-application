@@ -89,24 +89,25 @@ const getTimeline = (timeline) => {
     const sectionName = timeline.name
     const listSections = [...timeline.list]
     const showListSections = listSections.map((item, index)=>{
-        if (index !== listSections.length -1) {
+        if (index === listSections.length -1) {
             return getSection(item)
         }
         else {
             return (
                 <Fragment key={uuid()}>
-                <hr />
                 {getSection(item)}
+                <hr />
                 </Fragment>
             )
         }
     })
     return (
-        <ul key={uuid()}>
+        <ul key={uuid()}>       
             <hr />
             <h3 className='bold-font'>{sectionName}</h3>
-            {showListSections.length > 1 && <hr />}
+            <hr />
             {showListSections}
+           
         </ul>
     )
 }
@@ -120,6 +121,7 @@ const getSection = (section) => {
             {section[keys[2]] && <><i className='italic-font'>{section[keys[2]]}</i><br /></>}
             <strong className='bold-font'>{section[keys[0]]}</strong>
             <p>{section[keys[3]]}</p>
+            
         </li>
     )
 }
