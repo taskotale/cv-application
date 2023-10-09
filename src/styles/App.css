@@ -100,8 +100,13 @@ section  {
 
 
 .btn-delete {
+  width: fit-content;
   position: relative;
+  margin-top: 10pt;
   left: 85%;
+}
+.fa-trash {
+  color: var(--accentColor);
 }
 
 .btn-add-new-timeline {
@@ -126,6 +131,10 @@ section  {
 .accordion-section {
   box-shadow: 2px 10px 35px 1px rgba(153,153,153,0.3);
 }
+/* .accordion-element {
+  display: flex;
+  flex-direction: column;
+} */
 
 
 section::-webkit-scrollbar {
@@ -137,3 +146,4 @@ section {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+

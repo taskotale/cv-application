@@ -109,6 +109,7 @@ hr {
     position: relative;
     z-index: 20;
     font-family: 'PoppinsBold';
+    margin-bottom: 25pt;
 }
 
 .heading-info::before {

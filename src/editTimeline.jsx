@@ -6,32 +6,25 @@ import TextArea from "./textareaHight"
 export default function EditTimelines ({timeline, onChange}) {
   const [newTimeline, setNewTimeline] = useState(false)
   const [accordion, setAccordion] = useState(false)
-
+  
   const data = timeline
   
   const title = <h2>{data.name}</h2>
   const fields = []
   data.list.map((field, index)=>{
     fields.push(
-      <div className="accordion-section">
-      <div className="accordion-collapsed"
+      <div key={uuid()} className="accordion-section">
+      <div key={uuid()} className="accordion-collapsed"
         onClick={()=>accordion!==field.key?setAccordion(field.key):setAccordion(false)}>
-        <div>{field[Object.keys(field)[0]]}</div>
-        <div>{accordion===field.key?<i className="fa-solid fa-down-left-and-up-right-to-center"></i> : <i className="fa-solid fa-up-right-and-down-left-from-center"></i> }</div>
+        <div key={uuid()}>{field[Object.keys(field)[0]]}</div>
+        <div key={uuid()}>{accordion===field.key?<i className="fa-solid fa-down-left-and-up-right-to-center"></i> : <i className="fa-solid fa-up-right-and-down-left-from-center"></i> }</div>
       </div>
       {accordion === field.key && <div
         className='accordion-element'
         key={field.key}
       >
         <hr style={{height:'1px'}}/>
-        {listKeys(field, onChange, index, data.name)}
-        <button 
-              className="btn-delete"
-              onClick={()=>{
-                onChange('delete', index, data.name)
-              }}
-            >X
-        </button>                           
+        {listKeys(field, onChange, index, data.name)}                   
       </div>}
       </div>
       
@@ -126,8 +119,8 @@ export default function EditTimelines ({timeline, onChange}) {
   }
 
   return (
-    <div className="edit-timelines-container">
-      <div>
+    <div key={uuid()} className="edit-timelines-container">
+      <div key={uuid()}>
         {title}
         {fields}
       </div>
@@ -171,9 +164,17 @@ const listKeys = (timeline, change, index, grandparent) => {
           grandparent={grandparent}
           />
       )
-    }
-      
+    }  
   }
+  show.push(
+    <button 
+            className="btn-delete"
+            onClick={()=>{
+              change('delete', index, grandparent)
+            }}
+          ><i className="fa-solid fa-trash"></i>
+      </button>
+  )
 
   return show
 } 
