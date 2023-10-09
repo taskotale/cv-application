@@ -114,7 +114,7 @@ section  {
   background-color: var(--accentColor);
   color: var(--colorOne);
   margin-bottom: 15pt;
-  align-self: center;
+  
 }
 
 .edit-timelines-container {
@@ -122,6 +122,11 @@ section  {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.edit-timelines-container>div:nth-child(2){
+  width: 100%;
+  display: flex;
+  justify-content: end;
 }
 
 .accordion-collapsed {
