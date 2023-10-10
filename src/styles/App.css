@@ -165,3 +165,8 @@ section {
 }
 
 
+@media only screen and (max-width:500px) {
+  .main {
+    display: flex;
+  }
+}

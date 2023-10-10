@@ -8,8 +8,8 @@ import PDFGenerator from './pdfGenerator.jsx'
 import person from './data.jsx'
 import PickColorScheme from './editColorScheme.jsx'
 import './styles/App.css'
-
-// ADD DATES START AND END
+import { isMobile } from 'react-device-detect'
+import { useSwipeable } from 'react-swipeable'
 
 
 
@@ -21,6 +21,15 @@ export default function App() {
   const [showPdf, setShowPdf] = useState(false)
   const [colorScheme, setColorScheme] = useState(person.colorScheme)
 
+  const [swap, setSwap] = useState('nav')
+
+  const handleShowPdf = () => setShowPdf(!showPdf)
+
+  const swipeHandler = useSwipeable({
+    onSwipedLeft: () => setSwap('edit'),
+    onSwipedRight: () => setSwap('nav')
+  })
+  
   const changeInfo = (key, value) => {
     const updated = {
       ...editInfo,
@@ -95,14 +104,12 @@ export default function App() {
     setFieldToEdit([location, field])
   }
 
-  const handleShowPdf = () => setShowPdf(!showPdf)
-
     return (
       <>
       {showPdf && <PDFGenerator colorScheme={colorScheme} handleShowPdf={handleShowPdf}/>}
       {!showPdf &&
-        <div className='main' id='main'> 
-            <section className="nav" id='nav' >
+        <div className='main' id='main' {...swipeHandler}> 
+            {swap==='nav' && <section className="nav" id='nav'>
               <NavBtns
                 person={person}
                 setHandle={changeFieldToEdit}
@@ -111,7 +118,8 @@ export default function App() {
                 <button className='btn-pdf' onClick={handleShowPdf}>Look PDF</button> 
               </div>
             </section>
-            <section className="edit" id="editCV">
+            }
+            {swap==='edit'&&<section className="edit" id="editCV">
               {fieldToEdit[0]==='info'?
               <EditInfo 
                   info = {editInfo}
@@ -134,11 +142,10 @@ export default function App() {
                 changeColors = {setColorScheme}
               />   
               }
-              
-            </section>
-            <section className="displayCV" id="displayCV">
+            </section>}
+            {!isMobile && <section className="displayCV" id="displayCV">
                 <DisplayCV data={person}></DisplayCV>
-            </section>
+            </section>}
         </div>
       }
     </>
