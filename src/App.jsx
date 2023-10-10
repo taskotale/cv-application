@@ -32,14 +32,15 @@ export default function App() {
 
   
   const changeTimeline = (key, value, parent, grandparent) => {
-    
+    console.log(key)
     let newTimeline = {}
-    if(key=='delete') {
+    if(key === 'delete') {
       let temp = person.timelines.find(timeline=>timeline.name === parent)
       temp.list.splice(value,1)
       newTimeline = temp
     }
     else if(grandparent){
+      if ((key === 'name' && value === '')||(key === 'position' && value === '')) return alert('Field cant be empty')
       const childToChange = editTimeline.list[parent]
       const updated = {
         ...childToChange,

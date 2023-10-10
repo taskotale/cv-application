@@ -13,7 +13,7 @@ export default function EditTimelines ({timeline, onChange}) {
   const fields = []
   data.list.map((field, index)=>{
     fields.push(
-      <div key={uuid()} className="accordion-section">
+      <div key={field.key} className="accordion-section">
       <div key={uuid()} className="accordion-collapsed"
         onClick={()=>accordion!==field.key?setAccordion(field.key):setAccordion(false)}>
         <div key={uuid()}>{field[Object.keys(field)[0]]}</div>
@@ -89,7 +89,7 @@ export default function EditTimelines ({timeline, onChange}) {
           const newData = getObjFromForm(inputs)
           newData['key']=uuid()
           e.preventDefault()
-          if(newData.name == '') alert('Please enter the name of the degree')
+          if(newData.name === '' || newData.position === '') alert('Please enter the name/position')
           else addNewObj(newData, data.name)
         }
         }
@@ -122,8 +122,8 @@ export default function EditTimelines ({timeline, onChange}) {
   }
 
   return (
-    <div key={uuid()} className="edit-timelines-container">
-      <div key={uuid()}>
+    <div className="edit-timelines-container">
+      <div>
         {title}
         {fields}
       </div>

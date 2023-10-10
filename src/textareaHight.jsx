@@ -6,9 +6,9 @@ export default function TextArea ({section, data, change, index, grandparent}) {
     const changeHeight = (box) => {
         const height = box.scrollHeight;
         const rowHeight = 15;
-        const trows = Math.ceil(height/rowHeight) -1;
-        if(trows) {
-            trows < 17? setTextareaHeight(trows) : setTextareaHeight(17)
+        const rows = Math.ceil(height/rowHeight) -1;
+        if(rows) {
+            rows < 17? setTextareaHeight(rows) : setTextareaHeight(17)
         }
       }
     return (
