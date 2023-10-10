@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { v4 as uuid } from 'uuid';
-
+import formatDate from "./formatDate";
 import TextArea from "./textareaHight"
+import DatePick from "./DatePick";
 
 export default function EditTimelines ({timeline, onChange}) {
   const [newTimeline, setNewTimeline] = useState(false)
@@ -38,7 +39,26 @@ export default function EditTimelines ({timeline, onChange}) {
   const addNewTimelineForm = (timeline) => {
     const show = []
     for(const key in timeline) {
-      if (key !== 'description' && key !== 'responsibilities') {
+      if (key === 'description' || key === 'responsibilities') {
+        show.push(
+          <div className="form-field" key={key}>
+            <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
+            <textarea
+              id={key}
+              name={key}
+              key={key}
+            />
+          </div>
+        )
+      } else if (key === 'start' || key === 'end') {
+          show.push(<div className="form-field" key={key}>
+            <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
+            <DatePick 
+              section={key}
+              timeline={timeline}
+            />
+          </div>)
+      } else {
         if (key !=='key')show.push(
           <div className="form-field" key={key}>
             <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
@@ -47,18 +67,6 @@ export default function EditTimelines ({timeline, onChange}) {
               name={key}
               key={key}
               required
-            />
-          </div>
-          
-        )
-      } else {
-        show.push(
-          <div className="form-field" key={key}>
-            <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
-            <textarea
-              id={key}
-              name={key}
-              key={key}
             />
           </div>
         )
@@ -87,6 +95,7 @@ export default function EditTimelines ({timeline, onChange}) {
         onClick={(e)=> {
           const inputs = document.forms[0].elements
           const newData = getObjFromForm(inputs)
+          console.log(newData)
           newData['key']=uuid()
           e.preventDefault()
           if(newData.name === '' || newData.position === '') alert('Please enter the name/position')
@@ -104,6 +113,7 @@ export default function EditTimelines ({timeline, onChange}) {
       <button
       className="btn-add-new-timeline"
         onClick={()=>{
+            setAccordion(false)
             setNewTimeline(addNewTimelineForm(data.template))
           }
         }
@@ -141,7 +151,31 @@ export default function EditTimelines ({timeline, onChange}) {
 const listKeys = (timeline, change, index, grandparent) => {
   const show = []
   for(const key in timeline) {
-    if (key !== 'description' && key !== 'responsibilities') {
+    if (key === 'description' || key === 'responsibilities') {
+      show.push(
+        <TextArea
+          key={key} 
+          section={key}
+          data={timeline}
+          change={change}
+          index={index}
+          grandparent={grandparent}
+          />
+      )
+    } else if (key === 'start' || key === 'end') {
+      show.push(
+      <div className="form-field" key={key}>
+        <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
+        <DatePick 
+          section={key}
+          timeline={timeline}
+          index={index}
+          change={change}
+          grandparent={grandparent}
+          />
+      </div>
+      )
+    } else {
       if (key !=='key') show.push(
         <div className="timeline-section" key={key}>
             <label htmlFor={timeline[key]+index}>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
@@ -156,17 +190,6 @@ const listKeys = (timeline, change, index, grandparent) => {
             />
         </div>
       )
-    } else {
-      show.push(
-        <TextArea
-          key={key} 
-          section={key}
-          data={timeline}
-          change={change}
-          index={index}
-          grandparent={grandparent}
-          />
-      )
     }  
   }
   show.push(
@@ -178,6 +201,7 @@ const listKeys = (timeline, change, index, grandparent) => {
             }}
           ><i className="fa-solid fa-trash"></i>
       </button>
+      
   )
 
   return show

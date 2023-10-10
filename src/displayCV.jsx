@@ -2,6 +2,8 @@
 import './styles/displayCV.css'
 import { v4 as uuid } from 'uuid';
 import {Fragment} from 'react'
+import formatDate from "./formatDate";
+
 
 
 export default function DisplayCV ({data}) {
@@ -117,10 +119,10 @@ const getSection = (section) => {
     const keys = Object.keys(section)
     return (  
         <li key={uuid()}>
-            {section[keys[1]] && <><i>{section[keys[1]]}</i><br /></>}
-            {section[keys[2]] && <><i className='italic-font'>{section[keys[2]]}</i><br /></>}
+            {section[keys[1]] && <><i>{formatDate(section[keys[1]])+' - '+formatDate(section[keys[2]])}</i><br /></>}
+            {section[keys[3]] && <><i className='italic-font'>{section[keys[3]]}</i><br /></>}
             <strong className='bold-font'>{section[keys[0]]}</strong>
-            <p>{section[keys[3]]}</p>
+            <p>{section[keys[4]]}</p>
             
         </li>
     )

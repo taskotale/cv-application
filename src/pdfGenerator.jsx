@@ -1,6 +1,7 @@
 import './styles/pdfGenerator.css';
 import person from './data.jsx'
 import { Document, Font, Image, Line, Page, PDFViewer, Text, Svg, Path, View, StyleSheet } from '@react-pdf/renderer';
+import formatDate from "./formatDate";
 
 
 
@@ -68,10 +69,10 @@ const PDFGenerator = ({colorScheme,handleShowPdf}) => {
     const keys = Object.keys(section)
     return ( 
       <View style={styles.sectionTimeline}>
-        <Text style={styles.negative}>• {section[keys[1]]}</Text>
-        <Text style={styles.italicFont}>{section[keys[2]]}</Text>
+        <Text style={styles.negative}>• {formatDate(section[keys[1]]) + ' - ' + formatDate(section[keys[2]])}</Text>
+        <Text style={styles.italicFont}>{section[keys[3]]}</Text>
         <Text style={styles.boldFont}>{section[keys[0]]}</Text>
-        <Text>{section[keys[3]]}</Text>
+        <Text>{section[keys[4]]}</Text>
         <YellowLine/>
       </View> 
     )
@@ -197,7 +198,6 @@ const PDFGenerator = ({colorScheme,handleShowPdf}) => {
     }
     
   });
-  console.log(person.info.image)
   // Create Document Component
   const MyDocument = () => (
     <Document>

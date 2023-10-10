@@ -40,7 +40,8 @@ const person = {
             list: [
                 {
                     name : 'CS50',
-                    date : '2023',
+                    start: '2023-10',
+                    end: '2023-10',
                     location: 'Harvard - Online',
                     description:`An introduction to computer science and programming, covering topics in web development, algorithms.
                     Learned essential computer science concepts and gained hands-on experience with programming languages such as C, Python, and web technologies like HTML, CSS, and JavaScript. Additionally, the course covered algorithms, data structures, and introduced me to the world of web development with practical projects using frameworks like Flask and SQL for database management.`,
@@ -49,7 +50,8 @@ const person = {
             ],
             template: {
                     name : '' ,
-                    date : '',
+                    start : '',
+                    end: '',
                     location : '',
                     description: '',
                     key: ''
@@ -61,14 +63,16 @@ const person = {
             list: [
                 {
                     position: 'operation',
-                    when: '2022',
+                    start: '2022',
+                    end: '2023',
                     company: 'perf',
                     responsibilities: 'asdujejbff',
                     key: uuid()
                 },
                 {
                     position: 'sales',
-                    when: '2021',
+                    start: '2021',
+                    end: '',
                     company: 'perf',
                     responsibilities: 'sellisng stuff',
                     key: uuid()
@@ -76,7 +80,8 @@ const person = {
             ],
             template: {
                 position: '',
-                when: '',
+                start: '',
+                end:'',
                 company: '',
                 responsibilities: '',
                 key:''

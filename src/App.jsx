@@ -32,7 +32,6 @@ export default function App() {
 
   
   const changeTimeline = (key, value, parent, grandparent) => {
-    console.log(key)
     let newTimeline = {}
     if(key === 'delete') {
       let temp = person.timelines.find(timeline=>timeline.name === parent)
