@@ -19,8 +19,7 @@ export default function EditHighlights ({highlight, onChange, changeName, setHan
                 onChange={(e)=>{
                     changeName(text.key, e.target.value)
                 }}
-                >
-            </input>
+                />
             <i className="fa-solid fa-pen-to-square"
             onClick={()=>setShowEditName(false)}
             ></i>
