@@ -7,30 +7,13 @@ import { v4 as uuid } from 'uuid'
 export default function EditHighlights ({highlight, onChange, changeName, setHandle}) {
 
     const text = highlight
-    const inputRef = useRef(null)
-    const editName = (
-        <div key={text.key}>
-            <input
-                autoFocus
-                ref={inputRef}
-                id='name-edit'
-                className='highlight-name-edit-input'
-                defaultValue={text.name}
-                onChange={(e)=>{
-                    changeName(text.key, e.target.value)
-                }}
-                />
-            <i className="fa-solid fa-pen-to-square"
-            onClick={()=>setShowEditName(false)}
-            ></i>
-        </div> 
-    )
-    const initialNameState = text.name === 'New Highlight'? editName : false
-
-    const [newHighlight, setNewHighlight] = useState(false)
-    const [showEditName, setShowEditName] = useState(initialNameState)
-
     
+    // console.log(initialNameState)
+    const [newHighlight, setNewHighlight] = useState(false)
+    const [showEditName, setShowEditName] = useState(false)
+
+    const inputRef = useRef(null)
+
     if(!text) {
         return (
             <div>
@@ -57,7 +40,24 @@ export default function EditHighlights ({highlight, onChange, changeName, setHan
                         <i className="fa-solid fa-pen-to-square"></i>
                     </div>
                 </>
-    
+
+    const editName = 
+        <div key={text.key}>
+            <input
+                autoFocus
+                ref={inputRef}
+                id='name-edit'
+                className='highlight-name-edit-input'
+                defaultValue={text.name === 'New Highlight'? '' : text.name}
+                onChange={(e)=>{
+                    changeName(text.key, e.target.value)
+                }}
+                onBlur={()=>setShowEditName(false)}
+                />
+            <i className="fa-solid fa-pen-to-square"
+            onClick={()=>setShowEditName(false)}
+            ></i>
+        </div> 
 
     let showNameEdit = showEditName
     if(showEditName.key !== text.key) {
@@ -128,6 +128,12 @@ export default function EditHighlights ({highlight, onChange, changeName, setHan
         show = false
         if (!newHighlight === false) {
             setNewHighlight(show)
+        }
+    }
+
+    if(!showEditName) {
+        if(text.name == 'New Highlight'){
+            setShowEditName(editName)
         }
     }
     
