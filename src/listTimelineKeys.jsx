@@ -48,7 +48,8 @@ export default function listKeys (timeline, change, index, grandparent, setModal
       }  
     }
     show.push(
-      <button 
+      <div className="btn-delete-wrap">
+        <button 
               key={uuid()}
               className="btn-delete"
               onClick={()=>{
@@ -56,6 +57,8 @@ export default function listKeys (timeline, change, index, grandparent, setModal
               }}
             ><i className="fa-solid fa-trash"></i>
         </button>
+      </div>
+
     )
     return show
   } 

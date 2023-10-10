@@ -98,12 +98,13 @@ section  {
   flex-direction: column;
 }
 
-
+.btn-delete-wrap {
+  display: flex;
+  justify-content: end;
+}
 .btn-delete {
   width: fit-content;
-  position: relative;
   margin-top: 10pt;
-  left: 85%;
 }
 .fa-trash {
   color: var(--accentColor);

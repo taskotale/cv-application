@@ -1,7 +1,5 @@
 import { useState } from "react"
 import { v4 as uuid } from 'uuid';
-import TextArea from "./textareaHight"
-import DatePick from "./DatePick";
 import ModalAlert from "./modalAlert";
 import listKeys from "./listTimelineKeys";
 import addNewTimelineForm from "./addTimelineForm";

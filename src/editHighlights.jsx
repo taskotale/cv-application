@@ -70,7 +70,7 @@ export default function EditHighlights ({highlight, onChange, changeName, setHan
     const fields = []
     text.list.map((field, index) => {
         fields.push(
-            <>
+            <div>
                 <input
                     id={field}
                     name={field} 
@@ -89,7 +89,7 @@ export default function EditHighlights ({highlight, onChange, changeName, setHan
                     }}
                     >X
                 </button>
-            </>
+            </div>
         )
     })
 

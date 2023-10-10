@@ -89,8 +89,7 @@ const PDFGenerator = ({colorScheme,handleShowPdf}) => {
       <View wrap={false} key={data.name}>
         <Text style={styles.timelineName}>{data.name}</Text>
         <YellowLine/>
-        <Type/>
-
+        <Type />
       </View>
     )
   }
@@ -187,7 +186,7 @@ const PDFGenerator = ({colorScheme,handleShowPdf}) => {
     rightContent:{
       marginLeft:'0.55cm',
       marginRight:'0.55cm',
-      fontSize: '4mm'
+      fontSize: '3.5mm'
     },
     sectionTimeline:{
       gap:'1mm'
