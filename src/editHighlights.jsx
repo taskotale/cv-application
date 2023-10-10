@@ -5,12 +5,33 @@ import { v4 as uuid } from 'uuid'
 
 
 export default function EditHighlights ({highlight, onChange, changeName, setHandle}) {
-    const [newHighlight, setNewHighlight] = useState(false)
-    const [showEditName, setShowEditName] = useState(false)
 
-    const inputRef = useRef(null)
-    
     const text = highlight
+    const inputRef = useRef(null)
+    const editName = (
+        <div key={text.key}>
+            <input
+                autoFocus
+                ref={inputRef}
+                id='name-edit'
+                className='highlight-name-edit-input'
+                defaultValue={text.name}
+                onChange={(e)=>{
+                    changeName(text.key, e.target.value)
+                }}
+                >
+            </input>
+            <i className="fa-solid fa-pen-to-square"
+            onClick={()=>setShowEditName(false)}
+            ></i>
+        </div> 
+    )
+    const initialNameState = text.name === 'New Highlight'? editName : false
+
+    const [newHighlight, setNewHighlight] = useState(false)
+    const [showEditName, setShowEditName] = useState(initialNameState)
+
+    
     if(!text) {
         return (
             <div>
@@ -29,7 +50,7 @@ export default function EditHighlights ({highlight, onChange, changeName, setHan
                         key={text.name}
                         className='highlight-name'
                         onClick={()=>{
-                            showEditName === false ? setShowEditName(editName()): setShowEditName(false)
+                            showEditName === false ? setShowEditName(editName): setShowEditName(false)
                         }
                         }
                         >{text.name}
@@ -37,28 +58,7 @@ export default function EditHighlights ({highlight, onChange, changeName, setHan
                         <i className="fa-solid fa-pen-to-square"></i>
                     </div>
                 </>
-
-    const editName = () => {
-        
-        return (
-                <div key={text.key}>
-                    <input
-                        autoFocus
-                        ref={inputRef}
-                        id='name-edit'
-                        className='highlight-name-edit-input'
-                        defaultValue={text.name}
-                        onChange={(e)=>{
-                            changeName(text.key, e.target.value)
-                        }}
-                    >
-                    </input>
-                    <i className="fa-solid fa-pen-to-square"
-                    onClick={()=>setShowEditName(false)}
-                    ></i>
-                </div> 
-                )
-    }
+    
 
     let showNameEdit = showEditName
     if(showEditName.key !== text.key) {

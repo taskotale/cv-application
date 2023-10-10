@@ -29,7 +29,6 @@ export default function App() {
     person.info = updated
     setEditInfo(updated)
   }
-
   
   const changeTimeline = (key, value, parent, grandparent) => {
     let newTimeline = {}
@@ -39,7 +38,6 @@ export default function App() {
       newTimeline = temp
     }
     else if(grandparent){
-      if ((key === 'name' && value === '')||(key === 'position' && value === '')) return alert('Field cant be empty')
       const childToChange = editTimeline.list[parent]
       const updated = {
         ...childToChange,

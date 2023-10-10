@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import './styles/displayCV.css'
 import { v4 as uuid } from 'uuid';
 import {Fragment} from 'react'
