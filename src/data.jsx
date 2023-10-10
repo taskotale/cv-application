@@ -45,8 +45,15 @@ const person = {
                     description:`An introduction to computer science and programming, covering topics in web development, algorithms.
                     Learned essential computer science concepts and gained hands-on experience with programming languages such as C, Python, and web technologies like HTML, CSS, and JavaScript. Additionally, the course covered algorithms, data structures, and introduced me to the world of web development with practical projects using frameworks like Flask and SQL for database management.`,
                     key: uuid()
-                }
+                },
             ],
+            template: {
+                    name : '' ,
+                    date : '',
+                    location : '',
+                    description: '',
+                    key: ''
+            },
             key:uuid()
         },
         {
@@ -67,6 +74,13 @@ const person = {
                     key: uuid()
                 }
             ],
+            template: {
+                position: '',
+                when: '',
+                company: '',
+                responsibilities: '',
+                key:''
+            },
             key:uuid()
     }],
     colorScheme : {

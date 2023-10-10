@@ -80,9 +80,10 @@ export default function EditTimelines ({timeline, onChange}) {
     }
 
     const form = (
-      <form key={data.name}>
+      <form className='add-timeline-form' key={data.name}>
         {show}
         <button
+        className="btn-add-new-timeline"
         onClick={(e)=> {
           const inputs = document.forms[0].elements
           const newData = getObjFromForm(inputs)
@@ -99,15 +100,17 @@ export default function EditTimelines ({timeline, onChange}) {
   }
 
   const addNewBtn = (
-    <button
-    className="btn-add-new-timeline"
-      onClick={()=>{
-          setNewTimeline(addNewTimelineForm(data.list[0]))
+    <div className="add-new-btn-container">
+      <button
+      className="btn-add-new-timeline"
+        onClick={()=>{
+            setNewTimeline(addNewTimelineForm(data.template))
+          }
         }
-      }
-    >
-      Add New Section
-    </button>
+      >
+        Add New Section
+      </button>
+    </div>
   )
 
   let show = newTimeline
@@ -168,6 +171,7 @@ const listKeys = (timeline, change, index, grandparent) => {
   }
   show.push(
     <button 
+            key={uuid()}
             className="btn-delete"
             onClick={()=>{
               change('delete', index, grandparent)
