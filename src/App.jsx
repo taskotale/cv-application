@@ -8,7 +8,7 @@ import PDFGenerator from './pdfGenerator.jsx'
 import person from './data.jsx'
 import PickColorScheme from './editColorScheme.jsx'
 import './styles/App.css'
-import { isMobile } from 'react-device-detect'
+import { isMobile, useMobileOrientation } from 'react-device-detect'
 import { useSwipeable } from 'react-swipeable'
 
 
@@ -29,6 +29,7 @@ export default function App() {
     onSwipedLeft: () => setSwap('edit'),
     onSwipedRight: () => setSwap('nav')
   })
+  const { isLandscape } = useMobileOrientation()
   
   const changeInfo = (key, value) => {
     const updated = {
@@ -110,7 +111,7 @@ export default function App() {
       {showPdf && <PDFGenerator colorScheme={colorScheme} handleShowPdf={handleShowPdf}/>}
       {!showPdf &&
         <div className='main' id='main' {...swipeHandler}> 
-            {(swap==='nav' || !isMobile) && <section className="nav" id='nav'>
+            {(swap==='nav' || !isMobile || isLandscape) && <section className="nav" id='nav'>
               <NavBtns
                 person={person}
                 setHandle={changeFieldToEdit}
@@ -120,7 +121,7 @@ export default function App() {
               </div>
             </section>
             }
-            {(swap==='edit' || !isMobile)&&<section className="edit" id="editCV">
+            {(swap==='edit' || !isMobile || isLandscape)&&<section className="edit" id="editCV">
               {fieldToEdit[0]==='info'?
               <EditInfo 
                   info = {editInfo}
@@ -143,9 +144,9 @@ export default function App() {
                 changeColors = {setColorScheme}
               />   
               }
-              {isMobile && <i className="fa-solid fa-arrow-left" onClick={()=>setSwap('nav')}></i>}
+              {(isMobile && !isLandscape) && <i className="fa-solid fa-arrow-left" onClick={()=>setSwap('nav')}></i>}
             </section>}
-            {!isMobile && <section className="displayCV" id="displayCV">
+            {(!isMobile || isLandscape)&& <section className="displayCV" id="displayCV">
                 <DisplayCV data={person}></DisplayCV>
             </section>}
         </div>
