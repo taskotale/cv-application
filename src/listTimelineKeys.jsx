@@ -1,6 +1,7 @@
 import { v4 as uuid } from "uuid"
 import DatePick from "./DatePick"
 import TextArea from "./textareaHight"
+import deleteConfirm from "./deleteConfirm"
 
 export default function listKeys (timeline, change, index, grandparent, setModal) {
     const show = []
@@ -53,7 +54,7 @@ export default function listKeys (timeline, change, index, grandparent, setModal
               key={uuid()}
               className="btn-delete"
               onClick={()=>{
-                change('delete', index, grandparent)
+                deleteConfirm(setModal,change,'delete', index, grandparent)
               }}
             ><i className="fa-solid fa-trash"></i>
         </button>

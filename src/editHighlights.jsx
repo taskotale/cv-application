@@ -4,7 +4,7 @@ import { useRef, useState } from 'react'
 import { v4 as uuid } from 'uuid'
 
 
-export default function EditHighlights ({highlight, onChange, changeName, setHandle}) {
+export default function EditHighlights ({highlight, onChange, changeName, setHandle, setModal}) {
 
     const text = highlight
     
@@ -52,7 +52,11 @@ export default function EditHighlights ({highlight, onChange, changeName, setHan
                 onChange={(e)=>{
                     changeName(text.key, e.target.value)
                 }}
-                onBlur={()=>setShowEditName(false)}
+                onBlur={()=>{
+                    if(text.name === '') {
+                        setModal(<><div>Highlight must have a name</div><div>If you really want it without name, please input a space</div></>)
+                        document.getElementById('name-edit').focus()}
+                    else setShowEditName(false)}}
                 />
             <i className="fa-solid fa-pen-to-square"
             onClick={()=>setShowEditName(false)}

@@ -143,6 +143,7 @@ export default function App() {
                 onChange = {changeHighlight}
                 changeName ={changeHighlightName}
                 setHandle={changeFieldToEdit}
+                setModal={setModal}
               />:
               <PickColorScheme 
                 colorScheme = {colorScheme}

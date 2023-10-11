@@ -3,6 +3,8 @@ import { v4 as uuid } from 'uuid';
 import listKeys from "./listTimelineKeys";
 import addNewTimelineForm from "./addTimelineForm";
 
+import './styles/editTimeline.css'
+
 
 export default function EditTimelines ({timeline, onChange, setModal}) {
   const [newTimeline, setNewTimeline] = useState(false)

@@ -1,9 +1,9 @@
 export default function clearPerson(person, setModal) {
 
     const question = (
-        <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
+        <div className="question-box">
             <div>Are you sure?</div>
-            <button style={{backgroundColor:'red'}} onClick={()=>clearConfirmed(person, setModal)}>Delete Everything</button>
+            <button className="btn-conf-del" onClick={()=>clearConfirmed(person, setModal)}>Delete Everything</button>
         </div>
     )
     setModal(question)

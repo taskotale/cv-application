@@ -22,4 +22,20 @@
     align-items: center;
     gap: 10px;
     border: 1px solid var(--accentColor);
+    padding: 1rem;
+    text-align: center;
+}
+
+.btn-conf-del {
+    background-color:var(--accentColor);
+    color:var(--colorOne);
+    padding: 5px;
+  }
+  
+.question-box {
+    display:flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
 }
