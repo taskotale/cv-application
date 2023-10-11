@@ -32,76 +32,6 @@ const PDFGenerator = ({colorScheme,handleShowPdf}) => {
   const colorOne = colorScheme.alternative
   const colorTwo = colorScheme.main
 
-  //long yellow line on right side
-  const YellowLine = () => {
-    return (
-      <Svg height="10" width="900">
-        <Line x1="0" y1="5" x2="380" y2="5" strokeWidth={2} stroke={accentColor} />
-      </Svg>)
-    }
-  const singleHighlight = (data) => {
-    const List = () => {
-      return (data.list.map((item)=>{
-        return (
-          <Text style={styles.highlightItem} key={item}>{item}</Text>
-        )
-    }))}
-    return (
-      <View style={styles.highlight}>
-        <Text style={styles.highlightName}>
-          {data.name.toUpperCase()}
-        </Text>
-        <Svg height="10" width="140">
-          <Line x1="0" y1="5" x2="280" y2="5" strokeWidth={2} stroke={accentColor} />
-        </Svg>
-        <List/>
-      </View>
-    )
-  }
-
-  const Highlights = ({data}) => {
-    const allHighlights = data.map((highlight)=>{
-      return singleHighlight(highlight)
-    })
-    return allHighlights
-  }
-  const getSection = (section) => {
-    const keys = Object.keys(section)
-    return ( 
-      <View style={styles.sectionTimeline}>
-        <Text style={styles.negative}>• {formatDate(section[keys[1]]) + ' - ' + formatDate(section[keys[2]])}</Text>
-        <Text style={styles.italicFont}>{section[keys[3]]}</Text>
-        <Text style={styles.boldFont}>{section[keys[0]]}</Text>
-        <Text>{section[keys[4]]}</Text>
-        <YellowLine/>
-      </View> 
-    )
-}
-
-
-  const typeTimeline = (data) => {
-    const Type = () => {
-      return (data.list.map((item)=>{
-        return getSection(item)
-      }))
-    }
-    return (
-      <View wrap={false} key={data.name}>
-        <Text style={styles.timelineName}>{data.name}</Text>
-        <YellowLine/>
-        <Type />
-      </View>
-    )
-  }
-
-  const Timelines = ({data}) => {
-    const allTimelines = data.map((timeline)=>{
-      return typeTimeline(timeline)
-    })
-    return allTimelines
-  }
-
-
   const styles = StyleSheet.create({
     page: {
       flexDirection: 'row',
@@ -197,8 +127,77 @@ const PDFGenerator = ({colorScheme,handleShowPdf}) => {
     }
     
   });
+  //long yellow line on right side
+  const YellowLine = () => {
+    return (
+      <Svg height="10" width="900">
+        <Line x1="0" y1="5" x2="380" y2="5" strokeWidth={2} stroke={accentColor} />
+      </Svg>)
+    }
+  const singleHighlight = (data) => {
+    const List = () => {
+      return (data.list.map((item)=>{
+        return (
+          <Text style={styles.highlightItem} key={item}>{item}</Text>
+        )
+    }))}
+    return (
+      <View style={styles.highlight}>
+        <Text style={styles.highlightName}>
+          {data.name.toUpperCase()}
+        </Text>
+        <Svg height="10" width="140">
+          <Line x1="0" y1="5" x2="280" y2="5" strokeWidth={2} stroke={accentColor} />
+        </Svg>
+        <List/>
+      </View>
+    )
+  }
+
+  const Highlights = ({data}) => {
+    const allHighlights = data.map((highlight)=>{
+      return singleHighlight(highlight)
+    })
+    return allHighlights
+  }
+  const getSection = (section) => {
+    const keys = Object.keys(section)
+    return ( 
+      <View style={styles.sectionTimeline}>
+        <Text style={styles.negative}>• {formatDate(section[keys[1]]) + ' - ' + formatDate(section[keys[2]])}</Text>
+        <Text style={styles.italicFont}>{section[keys[3]]}</Text>
+        <Text style={styles.boldFont}>{section[keys[0]]}</Text>
+        <Text>{section[keys[4]]}</Text>
+        <YellowLine/>
+      </View> 
+    )
+}
+
+const typeTimeline = (data) => {
+  if (data.list.length === 0) return
+  const Type = () => {
+    return (data.list.map((item)=>{
+      return getSection(item)
+    }))
+  }
+  return (
+    <View wrap={false} key={data.name}>
+      <Text style={styles.timelineName}>{data.name}</Text>
+      <YellowLine/>
+      <Type />
+    </View>
+  )
+}
+
+const Timelines = ({data}) => {
+  const allTimelines = data.map((timeline)=>{
+    return typeTimeline(timeline)
+  })
+  return allTimelines
+}
+
   // Create Document Component
-  const MyDocument = () => (
+const MyDocument = () => (
     <Document>
       <Page size="A4" style={styles.page} wrap={true}>
         <View style={styles.leftContainerDisplay}>
