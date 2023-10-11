@@ -10,7 +10,8 @@ import PickColorScheme from './editColorScheme.jsx'
 import './styles/App.css'
 import { isMobile, useMobileOrientation } from 'react-device-detect'
 import { useSwipeable } from 'react-swipeable'
-
+import clearPerson from './cleanPerson.jsx'
+import ModalAlert from './modalAlert.jsx'
 
 
 export default function App() {
@@ -20,7 +21,7 @@ export default function App() {
   const [editHighlights, setEditHighlights] = useState(person.highlights)
   const [showPdf, setShowPdf] = useState(false)
   const [colorScheme, setColorScheme] = useState(person.colorScheme)
-
+  const [modal, setModal] = useState(false)
   const [swap, setSwap] = useState('nav')
 
   const handleShowPdf = () => setShowPdf(!showPdf)
@@ -108,6 +109,7 @@ export default function App() {
 
     return (
       <>
+      {modal&&<ModalAlert closeModal={setModal} textToShow={modal}/>}
       {showPdf && <PDFGenerator colorScheme={colorScheme} handleShowPdf={handleShowPdf}/>}
       {!showPdf &&
         <div className='main' id='main' {...swipeHandler}> 
@@ -119,6 +121,7 @@ export default function App() {
               <div>
                 <button className='btn-pdf' onClick={handleShowPdf}>Look PDF</button> 
               </div>
+                <button onClick={()=>clearPerson(person, setModal)} >Start New CV</button>
             </section>
             }
             {(swap==='edit' || !isMobile || isLandscape)&&<section className="edit" id="editCV">
@@ -130,7 +133,9 @@ export default function App() {
               fieldToEdit[0]==='timelines'?
               <EditTimelines
                 timeline = {editTimeline}
-                onChange= {changeTimeline} 
+                onChange= {changeTimeline}
+                modal={modal}
+                setModal={setModal} 
               />:
               fieldToEdit[0] === 'highlights'? 
               <EditHighlights
@@ -146,7 +151,7 @@ export default function App() {
               }
               {(isMobile && !isLandscape) && <i className="fa-solid fa-arrow-left" onClick={()=>setSwap('nav')}></i>}
             </section>}
-            {(!isMobile || isLandscape)&& <section className="displayCV" id="displayCV">
+            {(!isMobile || isLandscape) && <section className="displayCV" id="displayCV">
                 <DisplayCV data={person}></DisplayCV>
             </section>}
         </div>

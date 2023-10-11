@@ -7,6 +7,8 @@
 
 button {
   margin: 0.5rem;
+  border: none;
+  border-radius: 5px;
 }
 
 input {
@@ -27,6 +29,7 @@ section  {
 
 
 .btn-pdf {
+  margin-top: 3rem;
   background-color: var(--accentColor);
   color: var(--colorOne);
   border: none;

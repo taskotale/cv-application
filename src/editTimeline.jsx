@@ -1,14 +1,13 @@
 import { useState } from "react"
 import { v4 as uuid } from 'uuid';
-import ModalAlert from "./modalAlert";
 import listKeys from "./listTimelineKeys";
 import addNewTimelineForm from "./addTimelineForm";
 
 
-export default function EditTimelines ({timeline, onChange}) {
+export default function EditTimelines ({timeline, onChange, setModal}) {
   const [newTimeline, setNewTimeline] = useState(false)
   const [accordion, setAccordion] = useState(false)
-  const [modal, setModal] = useState(false)
+  
   
   const data = timeline
   
@@ -62,7 +61,6 @@ export default function EditTimelines ({timeline, onChange}) {
 
   return (
     <>
-    {modal&&<ModalAlert closeModal={setModal} textToShow={modal}/>}
     <div className="edit-timelines-container">
       <div>
         {title}
