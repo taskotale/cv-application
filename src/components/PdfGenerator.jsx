@@ -1,14 +1,12 @@
-import './styles/pdfGenerator.css';
-import person from './data.jsx'
+import '../styles/pdfGenerator.css';
+import person from '../supp-func/data.jsx'
 import { Document, Font, Image, Line, Page, PDFViewer, Text, Svg, Path, View, StyleSheet } from '@react-pdf/renderer';
-import formatDate from "./formatDate";
+import formatDate from "../supp-func/formatDate";
 
-
-
-import lightFont from './fonts/Poppins-Light.ttf'
-import boldFont from './fonts/Poppins-Bold.ttf'
-import regularFont from './fonts/Poppins-Regular.ttf'
-import italicFont from './fonts/Poppins-Italic.ttf'
+import lightFont from '../fonts/Poppins-Light.ttf'
+import boldFont from '../fonts/Poppins-Bold.ttf'
+import regularFont from '../fonts/Poppins-Regular.ttf'
+import italicFont from '../fonts/Poppins-Italic.ttf'
 
 Font.register({
   family: 'PoppinsThin',

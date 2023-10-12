@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { v4 as uuid } from 'uuid';
-import listKeys from "./listTimelineKeys";
-import addNewTimelineForm from "./addTimelineForm";
+import listKeys from "../supp-func/listTimelineKeys";
+import addNewTimelineForm from "./AddTimelineForm";
 
-import './styles/editTimeline.css'
+import '../styles/editTimeline.css'
 
 
 export default function EditTimelines ({timeline, onChange, setModal}) {

@@ -1,7 +1,6 @@
-import addNewHighlightBtn from './addNewHighlightBtn'
-import './styles/editNameSection.css'
+import addNewHighlightBtn from '../supp-func/addNewHighlightBtn'
+import '../styles/editNameSection.css'
 import { useRef, useState } from 'react'
-import { v4 as uuid } from 'uuid'
 
 
 export default function EditHighlights ({highlight, onChange, changeName, setHandle, setModal}) {

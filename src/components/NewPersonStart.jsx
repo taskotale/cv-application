@@ -1,4 +1,4 @@
-import person from "./data"
+import person from "../supp-func/data"
 
 export default function NewPersonStart ({setHandle, changeInfo}) {
     return (

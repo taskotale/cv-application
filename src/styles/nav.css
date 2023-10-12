@@ -1,0 +1,19 @@
+.btn-pdf {
+    margin-top: 3rem;
+    background-color: var(--accentColor);
+    color: var(--colorOne);
+    border: none;
+    border-radius: 3px;
+}
+
+.nav-section {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+  
+.nav-btn {
+display: flex;
+width: fit-content;
+margin-right: 0;
+}

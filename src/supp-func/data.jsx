@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid';
-import image from './static/img.jpg'
+import image from '../static/img.jpg'
 
 const person = {
     info: {

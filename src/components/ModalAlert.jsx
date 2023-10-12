@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import './styles/modalAlert.css'
+import '../styles/modalAlert.css'
 
 export default function ModalAlert ({textToShow, closeModal}) {
     const outsideDiv = useRef(null)

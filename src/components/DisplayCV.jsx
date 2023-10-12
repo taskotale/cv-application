@@ -1,7 +1,7 @@
-import './styles/displayCV.css'
+import '../styles/displayCV.css'
 import { v4 as uuid } from 'uuid';
 import {Fragment} from 'react'
-import formatDate from "./formatDate";
+import formatDate from "../supp-func/formatDate";
 
 
 export default function DisplayCV ({data}) {

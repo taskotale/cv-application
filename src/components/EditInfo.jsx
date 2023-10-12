@@ -1,5 +1,5 @@
 // import { useState } from "react"
-import TextArea from "./textareaHight";
+import TextArea from "./TextareaHight";
 
 
 export default function EditInfo ({info, change}) {

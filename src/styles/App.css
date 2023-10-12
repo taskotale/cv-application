@@ -52,14 +52,6 @@ section  {
   gap: 5px;
 }
 
-.btn-pdf {
-  margin-top: 3rem;
-  background-color: var(--accentColor);
-  color: var(--colorOne);
-  border: none;
-  border-radius: 3px;
-}
-
 .displayCV {
   height: 90svh;
   overflow-y: scroll;
@@ -79,18 +71,6 @@ section  {
   justify-content: space-around;
   grid-template-columns: 1fr 2fr 4fr;
   gap: 1rem;
-}
-
-.nav-section {
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-}
-
-.nav-btn {
-  display: flex;
-  width: fit-content;
-  margin-right: 0;
 }
 
 .color-edit {

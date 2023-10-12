@@ -3,18 +3,17 @@ import { useState } from 'react'
 import { isMobile, useMobileOrientation } from 'react-device-detect'
 import { useSwipeable } from 'react-swipeable'
 
-import DisplayCV from './displayCV.jsx'
-import EditHighlights from './editHighlights.jsx'
-import EditInfo from './editInfo.jsx'
-import EditTimelines from './editTimeline.jsx'
-import ModalAlert from './modalAlert.jsx'
-import NavBtns from './nav.jsx'
-import PDFGenerator from './pdfGenerator.jsx'
-import PickColorScheme from './editColorScheme.jsx'
+import DisplayCV from './components/DisplayCV.jsx'
+import EditHighlights from './components/EditHighlights.jsx'
+import EditInfo from './components/EditInfo.jsx'
+import EditTimelines from './components/EditTimeline.jsx'
+import ModalAlert from './components/ModalAlert.jsx'
+import NavBtns from './components/Nav.jsx'
+import PDFGenerator from './components/PdfGenerator.jsx'
+import PickColorScheme from './components/EditColorScheme.jsx'
 
-import clearPerson from './cleanPerson.jsx'
-import person from './data.jsx'
-import NewPersonStart from './newPage.jsx'
+import person from './supp-func/data.jsx'
+import NewPersonStart from './components/NewPersonStart.jsx'
 
 export default function App() {
   const [fieldToEdit, setFieldToEdit] = useState(['info'])
@@ -119,11 +118,10 @@ export default function App() {
               <NavBtns
                 person={person}
                 setHandle={changeFieldToEdit}
+                handleShowPdf={handleShowPdf}
+                setModal={setModal}
+                setFieldToEdit={setFieldToEdit}
               />
-              <div>
-                <button className='btn-pdf' onClick={handleShowPdf}>Look PDF</button> 
-              </div>
-                <button onClick={()=>clearPerson(person, setModal, setFieldToEdit)} >Start New CV</button>
             </section>
             }
             {(swap==='edit' || !isMobile || isLandscape)&&<section className="edit" id="editCV">

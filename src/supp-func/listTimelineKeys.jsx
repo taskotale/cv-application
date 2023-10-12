@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid"
-import DatePick from "./DatePick"
-import TextArea from "./textareaHight"
-import deleteConfirm from "./deleteConfirm"
+import DatePick from "../components/DatePick"
+import TextArea from "../components/TextareaHight"
+import deleteConfirm from "../components/DeleteConfirm"
 
 export default function listKeys (timeline, change, index, grandparent, setModal) {
     const show = []
