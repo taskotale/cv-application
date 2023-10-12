@@ -1,18 +1,20 @@
+import './styles/App.css'
 import { useState } from 'react'
+import { isMobile, useMobileOrientation } from 'react-device-detect'
+import { useSwipeable } from 'react-swipeable'
+
 import DisplayCV from './displayCV.jsx'
 import EditHighlights from './editHighlights.jsx'
 import EditInfo from './editInfo.jsx'
 import EditTimelines from './editTimeline.jsx'
+import ModalAlert from './modalAlert.jsx'
 import NavBtns from './nav.jsx'
 import PDFGenerator from './pdfGenerator.jsx'
-import person from './data.jsx'
 import PickColorScheme from './editColorScheme.jsx'
-import './styles/App.css'
-import { isMobile, useMobileOrientation } from 'react-device-detect'
-import { useSwipeable } from 'react-swipeable'
-import clearPerson from './cleanPerson.jsx'
-import ModalAlert from './modalAlert.jsx'
 
+import clearPerson from './cleanPerson.jsx'
+import person from './data.jsx'
+import NewPersonStart from './newPage.jsx'
 
 export default function App() {
   const [fieldToEdit, setFieldToEdit] = useState(['info'])
@@ -121,7 +123,7 @@ export default function App() {
               <div>
                 <button className='btn-pdf' onClick={handleShowPdf}>Look PDF</button> 
               </div>
-                <button onClick={()=>clearPerson(person, setModal)} >Start New CV</button>
+                <button onClick={()=>clearPerson(person, setModal, setFieldToEdit)} >Start New CV</button>
             </section>
             }
             {(swap==='edit' || !isMobile || isLandscape)&&<section className="edit" id="editCV">
@@ -145,6 +147,12 @@ export default function App() {
                 setHandle={changeFieldToEdit}
                 setModal={setModal}
               />:
+              fieldToEdit[0] === 'new'?
+              <NewPersonStart
+                setHandle = {setFieldToEdit}
+                changeInfo = {changeInfo}
+              />
+              :
               <PickColorScheme 
                 colorScheme = {colorScheme}
                 changeColors = {setColorScheme}

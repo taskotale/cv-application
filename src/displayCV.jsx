@@ -4,7 +4,6 @@ import {Fragment} from 'react'
 import formatDate from "./formatDate";
 
 
-
 export default function DisplayCV ({data}) {
     const personalDetails = getPersonalDetails(data.info)
     const highlights = getHighlights(data.highlights)
@@ -76,7 +75,6 @@ const getHighlights = (highlights) => {
     )
 }
 
-
 const getTimelines = (data) => {
     const timelines = [...data]
     const showTimelines = timelines.map((section)=>{
@@ -85,8 +83,8 @@ const getTimelines = (data) => {
     return showTimelines
 }
 
-
 const getTimeline = (timeline) => {
+    if(timeline.list.length === 0) return
     const sectionName = timeline.name
     const listSections = [...timeline.list]
     const showListSections = listSections.map((item, index)=>{
