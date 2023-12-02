@@ -18,15 +18,15 @@ hr {
 
 .leftContainerDisplay {
     padding: 3px;
+    padding-left: 5px;
     display: flex;
     flex-direction: column;
     background-color: var(--colorOne);
     position: relative;
     z-index: 30;
     color: var(--colorTwo);
-    margin-left: 5pt;
     overflow-wrap: break-word;
-    width: 11rem;
+    /* width: 11rem; */
 }
 
 .cv-description {
@@ -86,6 +86,7 @@ hr {
 
 .highlight>li {
     margin-left: 1rem;
+    max-width: 11rem;
 }
 
 .rightContainerDisplay {
