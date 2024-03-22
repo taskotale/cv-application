@@ -2,13 +2,13 @@ import '../styles/pdfGenerator.css';
 import person from '../supp-func/data.jsx';
 import * as rdd from 'react-device-detect';
 
-
 import {
 	Document,
 	Font,
 	Image,
 	Line,
 	Page,
+	PDFDownloadLink,
 	PDFViewer,
 	Text,
 	Svg,
@@ -297,15 +297,23 @@ const PDFGenerator = ({ colorScheme, handleShowPdf }) => {
 		</Document>
 	);
 
-  console.log(rdd.isMobile)
-
 	return (
 		<>
-			<button className="backBtn" onClick={handleShowPdf}>
+			<button className="cvViewBtn backBtn" onClick={handleShowPdf}>
 				Back to CV Maker
 			</button>
+			{/* PDF Download Link */}
+			<PDFDownloadLink
+				className="cvViewBtn downloadCvBtn button"
+				document={<MyDocument />}
+				fileName={person.info.name.replace(/\s+/g, '-') + '-resume.pdf'}
+			>
+				{({ blob, url, loading, error }) =>
+					loading ? 'Loading document...' : 'Download PDF'
+				}
+			</PDFDownloadLink>
 
-			<PDFViewer className="PDFViewer">
+			<PDFViewer className="PDFViewer" showToolbar={false}>
 				<MyDocument />
 			</PDFViewer>
 		</>

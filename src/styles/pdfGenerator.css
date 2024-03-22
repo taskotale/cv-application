@@ -1,16 +1,28 @@
 .PDFViewer {
-    height: 90svh;
-    width: 90svw;
+    height: 95svh;
+    width: 95svw;
     position: absolute;
     border: none;
+}
+
+.cvViewBtn {
+    background-color: var(--accentColor);
+    color: var(--colorOne);
+    border: none;
+    border-radius: 3px;
 }
 
 .backBtn {
     position: absolute;
     z-index: 99;
     top: 1pt;
-    background-color: var(--accentColor);
-    color: var(--colorOne);
-    border: none;
-    border-radius: 3px;
+    left: 3pt;
+}
+
+.downloadCvBtn {
+    position: absolute;
+    z-index: 99;
+    top: 1pt;
+    right: 3pt;
+    text-decoration: none;
 }
