@@ -1,5 +1,4 @@
 import '../styles/pdfGenerator.css';
-import person from '../supp-func/data.jsx';
 import * as rdd from 'react-device-detect';
 
 import {
@@ -40,7 +39,7 @@ Font.register({
 	src: italicFont,
 });
 
-const PDFGenerator = ({ colorScheme, handleShowPdf }) => {
+const PDFGenerator = ({ colorScheme, handleShowPdf, person }) => {
 	const accentColor = colorScheme.accent;
 	const colorOne = colorScheme.alternative;
 	const colorTwo = colorScheme.main;
